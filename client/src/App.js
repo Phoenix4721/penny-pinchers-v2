@@ -9,7 +9,7 @@ import fakeAuth from './utils/authContext'
 
 function App() {
 function PrivateRoute({ children, ...rest }) {
-  console.log('hi')
+
     return (
       <Route
         {...rest}

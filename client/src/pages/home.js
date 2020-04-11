@@ -13,7 +13,9 @@ function Home() {
         API.login({
             username: username.current.value,
             password: password.current.value
-        }).catch(err => {
+        })
+
+        .catch(err => {
             if (err) {
                 throw err
             }
