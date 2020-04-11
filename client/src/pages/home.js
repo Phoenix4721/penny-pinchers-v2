@@ -1,9 +1,10 @@
-import React, { useRef } from 'react'
+import React, { useRef, useContext } from 'react'
 import API from '../utils/API'
+import LogBut from '../components/logBut'
 
 
 function Home() {
-    //states for username and password
+
     const username = useRef();
     const password = useRef();
 
@@ -12,18 +13,21 @@ function Home() {
         API.login({
             username: username.current.value,
             password: password.current.value
+        }).catch(err => {
+            if (err) {
+                throw err
+            }
         })
+
+        
       };
 
- 
+ return (
+     <div>
 
-
-    return (
-        <div className="loginWrapper">
-            <div className="loginHeadDiv">
-                <h2 className='loginHead'>Log In</h2>
-            </div>
+        <div>
             <form className="loginForm" onSubmit={handleSubmit}>
+            <h1 className="h3">Sign in</h1>
                 <input 
                 className="form-control"
                 type="text"
@@ -40,16 +44,16 @@ function Home() {
                 required ref={password}
                 />   
 
-                <button className="btn" type="submit">
-                Submit
-                </button>       
+       
 
+                <LogBut />     
+                <a className="signUp" href="/signup">Sign Up</a>
             </form>
 
-                <div className="signUpDiv">
-                    <a className="signUp" href="/signup">Sign Up</a>
-                </div>
+        
         </div>
+        </div>
+       
     )   
 }
 

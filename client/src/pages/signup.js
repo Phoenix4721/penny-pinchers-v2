@@ -11,7 +11,7 @@ function Home() {
     const handleSubmit = e => {
         e.preventDefault();
         if (password.current.value !== passwordCon.current.value) {
-            console.log('no dice')
+  
         } else {
             API.createUser({
                 username: username.current.value,
@@ -25,52 +25,52 @@ function Home() {
 
 
     return (
-        <div className="signUpWrapper">
-            <div className="signUpHeadDiv">
-                <h2 className='signUpHead'>Log In</h2>
-            </div>
-            <form className="signUpForm" onSubmit={handleSubmit}>
+         <div>
+  
+                <div>
+                
+                <form className="signUpForm" onSubmit={handleSubmit}>
+                <h1 className="h3">Sign up</h1>
+                    <input 
+                    className="form-control"
+                    type="text"
+                    placeholder="Email"
+                    name="email"
+                    required ref={email}
+                    />
 
-                <input 
-                className="form-control"
-                type="text"
-                placeholder="Email"
-                name="email"
-                required ref={email}
-                />
+                    <input 
+                    className="form-control"
+                    type="text"
+                    placeholder="Username"
+                    name="username"
+                    required ref={username}
+                    />
 
-                <input 
-                className="form-control"
-                type="text"
-                placeholder="Username"
-                name="username"
-                required ref={username}
-                />
+                    <input 
+                    className="form-control"
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    id="password-input"
+                    required ref={password}
+                    />   
 
-                <input 
-                className="form-control"
-                type="password"
-                placeholder="Password"
-                name="password"
-                required ref={password}
-                />   
+                    <input 
+                    className="form-control"
+                    type="password"
+                    placeholder="Confirm Password"
+                    id="passwordCon-input"
+                    name="confirm password"
+                    required ref={passwordCon}
+                    />  
 
-                <input 
-                className="form-control"
-                type="password"
-                placeholder="Confirm Password"
-                name="confirm password"
-                required ref={passwordCon}
-                />  
+                    <button type="submit" className="subBut" >Sign Up</button>
+        
+                    <a className="signUp" href="/">Login</a>
 
-                <button className="btn" type="submit">
-                Submit
-                </button>       
+                </form>
 
-            </form>
-
-                <div className="loginDiv">
-                    <a className="login" href="/">Login</a>
                 </div>
         </div>
     )   

@@ -3,6 +3,7 @@ const express = require('express')
 const router = express.Router()
 const passport = require('../../config/passport')
 const db = require('../../models/user')
+//const isAuthenticated = require('../config/middleware/isAuthenticated')
 
 const { check, validationResult } = require('express-validator');
 
@@ -30,7 +31,10 @@ router.post('/user', [
 });
 
 router.post('/api/login', passport.authenticate('local'), (req, res) => {
-  res.json(req.user)
+
+
+     res.json('hi')
+ 
 })
 
 router.get('/logout', (req, res) => {
@@ -48,5 +52,6 @@ router.get('/api/user_data', (req, res) => {
     })
   }
 })
+
 
 module.exports = router
