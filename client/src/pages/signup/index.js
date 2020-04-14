@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import API from '../utils/API'
+import API from '../../utils/API'
 
 function Home() {
     //states for username and password

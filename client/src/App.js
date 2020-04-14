@@ -3,17 +3,19 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-d
 import Home from "./pages/home";
 import Signup from "./pages/signup";
 import Member from "./pages/member"
+import SetBill from "./pages/setBill"
 
 import fakeAuth from './utils/authContext'
 
 
 function App() {
 function PrivateRoute({ children, ...rest }) {
-
+ 
     return (
       <Route
         {...rest}
         render={({ location }) =>
+          
           fakeAuth.isAuthenticated ? (
             children
           ) : (
@@ -28,6 +30,8 @@ function PrivateRoute({ children, ...rest }) {
       />
     );
   }
+
+
 
   return (
    
@@ -45,6 +49,9 @@ function PrivateRoute({ children, ...rest }) {
         </Route>
         <PrivateRoute  path="/member">
           <Member />
+        </PrivateRoute>
+        <PrivateRoute  path="/setBills">
+          <SetBill />
         </PrivateRoute>
         </Switch>
       </div>

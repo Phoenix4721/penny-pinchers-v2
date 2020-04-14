@@ -1,6 +1,6 @@
 import React, { useRef, useContext } from 'react'
-import API from '../utils/API'
-import LogBut from '../components/logBut'
+import API from '../../utils/API'
+import LogBut from '../../components/logBut'
 
 
 function Home() {
