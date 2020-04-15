@@ -1,17 +1,18 @@
 import React from "react";
 import fakeAuth from '../../utils/authContext'
 import LogOut from '../../components/logOutBut'
+import Cookies from 'js-cookie'
 import {
     BrowserRouter as Router,
   
     useHistory,
   
   } from "react-router-dom";
-  import Cookies from 'js-cookie'
+
 
 function SetBills() {
     let history = useHistory();
-    //console.log(Cookies.get('userId'))
+    Cookies.set('url', '/setBills', { path: '' })
     let login = (site) => {
       fakeAuth.authenticate(() => {
         history.replace(site);

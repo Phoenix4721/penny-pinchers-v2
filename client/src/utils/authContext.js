@@ -9,7 +9,9 @@ const fakeAuth = {
     },
     signout(cb) {
       fakeAuth.isAuthenticated = false;
-      Cookies.set('userId', undefined)
+      Cookies.remove('userId', { path: '' })
+      Cookies.remove('userUn', { path: '' })
+      Cookies.remove('userPw', { path: '' })
       //localStorage.setItem('isAuthenticated', false)
       setTimeout(cb, 100);
     }

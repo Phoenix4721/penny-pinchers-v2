@@ -16,7 +16,7 @@ function Member() {
 
     let history = useHistory();
     let cooks = Number(Cookies.get('userId'))
-
+    Cookies.set('url', '/member', { path: '' })
     useEffect(() => {
      
         API.userGreeting({

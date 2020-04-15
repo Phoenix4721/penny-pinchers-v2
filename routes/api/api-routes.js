@@ -33,7 +33,7 @@ router.post('/user', [
 });
 
 router.post('/api/login', passport.authenticate('local'), (req, res) => {
-      res.json(req.user[0].id)
+      res.json(req.user[0])
 
 })
 
