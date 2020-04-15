@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import Home from "./pages/home";
 import Signup from "./pages/signup";
@@ -9,14 +9,15 @@ import fakeAuth from './utils/authContext'
 
 
 function App() {
+  
 function PrivateRoute({ children, ...rest }) {
- 
+    console.log(localStorage.getItem('isAuthenticated'))
     return (
       <Route
         {...rest}
         render={({ location }) =>
           
-          fakeAuth.isAuthenticated ? (
+         fakeAuth.isAuthenticated ? (
             children
           ) : (
             <Redirect

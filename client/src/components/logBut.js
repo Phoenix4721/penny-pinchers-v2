@@ -14,7 +14,7 @@ import fakeAuth from '../utils/authContext'
     let login = () => {
       fakeAuth.authenticate(() => {
         history.replace('/member');
-        console.log(history)
+     
       });
     };
   

@@ -13,8 +13,7 @@ passport.use(new LocalStrategy(
                 throw err
             } 
 
-            //console.log(user)
-           // console.log(password)
+           
             if (!user) {
                 return done(null, false, {
                     message: 'Incorrect username'
@@ -27,6 +26,7 @@ passport.use(new LocalStrategy(
             }
             
              return done(null, user)
+
         })
     }  
 ))

@@ -1,18 +1,24 @@
-import React, { useRef, useContext } from 'react'
+import React, { useRef, useEffect } from 'react'
 import API from '../../utils/API'
 import LogBut from '../../components/logBut'
+import Cookies from 'js-cookie'
 
 
 function Home() {
-
+    localStorage.setItem('isAuthenticated', false) 
     const username = useRef();
     const password = useRef();
+    
 
     const handleSubmit = e => {
         e.preventDefault();
         API.login({
             username: username.current.value,
             password: password.current.value
+        })
+        .then(res => {
+            Cookies.set('userId', res.data)
+
         })
 
         .catch(err => {

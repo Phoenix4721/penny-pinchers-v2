@@ -8,6 +8,7 @@ const fakeAuth = {
     },
     signout(cb) {
       fakeAuth.isAuthenticated = false;
+      //localStorage.setItem('isAuthenticated', false)
       setTimeout(cb, 100);
     }
   };

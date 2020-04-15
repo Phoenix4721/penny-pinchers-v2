@@ -6,7 +6,7 @@ export default {
     return axios({
         method: 'post',
         headers: { 'content-type': 'application/json' },
-        url: 'http://localhost:4001/user',
+        url: 'http://localhost:7001/user',
         data: postdata
       })
 
@@ -16,7 +16,7 @@ export default {
     return axios({
         method: 'post',
         headers: { 'content-type': 'application/json' },
-        url: 'http://localhost:4001/api/login',
+        url: 'http://localhost:7001/api/login',
         data: postdata
       })
 
@@ -26,7 +26,14 @@ export default {
     return axios.get("/logout");
   },
   // Saves a post to the database
-  userGreeting: function() {
-    return axios.get("/api/user_data");
+ 
+  userGreeting: function(postdata) {
+    return axios({
+        method: 'post',
+        headers: { 'content-type': 'application/json' },
+        url: 'http://localhost:7001/api/user',
+        data: postdata
+      })
+
   }
 };

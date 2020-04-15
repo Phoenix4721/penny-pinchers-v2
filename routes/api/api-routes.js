@@ -1,8 +1,10 @@
 //const passport = require('../config/passport')
 const express = require('express')
+const Cookies = require('js-cookie')
 const router = express.Router()
 const passport = require('../../config/passport')
 const db = require('../../models/user')
+const con = require('../../config/config')
 //const isAuthenticated = require('../config/middleware/isAuthenticated')
 
 const { check, validationResult } = require('express-validator');
@@ -31,27 +33,24 @@ router.post('/user', [
 });
 
 router.post('/api/login', passport.authenticate('local'), (req, res) => {
+      res.json(req.user[0].id)
 
-
-     res.json('hi')
- 
 })
+
 
 router.get('/logout', (req, res) => {
   req.logout()
   res.redirect('/')
 })
 
-router.get('/api/user_data', (req, res) => {
-  if (!req.user[0]) {
-    res.json({})
-  } else {
-    res.json({
-      username: req.user[0].username,
-      id: req.user[0].id
-    })
-  }
+router.post('/api/user', (req, res) => {
+  con.query("SELECT * FROM user WHERE id = ?", [req.body.id], (err, result) => {
+      
+      res.json(result)
+  })
+  
 })
+
 
 
 module.exports = router
