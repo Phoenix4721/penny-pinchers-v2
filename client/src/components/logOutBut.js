@@ -10,7 +10,7 @@ import Cookies from 'js-cookie'
 function AuthButton() {
     let history = useHistory();
 
-    Cookies.set('userId', undefined)
+    
   
     return fakeAuth.isAuthenticated ? (
       <p>

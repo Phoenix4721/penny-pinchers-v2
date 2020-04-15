@@ -11,7 +11,7 @@ import {
 
 function SetBills() {
     let history = useHistory();
-    console.log(Cookies.get('userId'))
+    //console.log(Cookies.get('userId'))
     let login = (site) => {
       fakeAuth.authenticate(() => {
         history.replace(site);

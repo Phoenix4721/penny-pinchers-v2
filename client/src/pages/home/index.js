@@ -5,11 +5,11 @@ import Cookies from 'js-cookie'
 
 
 function Home() {
-    localStorage.setItem('isAuthenticated', false) 
+
     const username = useRef();
     const password = useRef();
-    
 
+    
     const handleSubmit = e => {
         e.preventDefault();
         API.login({
@@ -17,7 +17,7 @@ function Home() {
             password: password.current.value
         })
         .then(res => {
-            Cookies.set('userId', res.data)
+            Cookies.set('userId', res.data, { path: '' })
 
         })
 

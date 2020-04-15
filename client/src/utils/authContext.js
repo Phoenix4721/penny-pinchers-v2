@@ -1,4 +1,5 @@
 import React from "react";
+import Cookies from 'js-cookie'
 
 const fakeAuth = {
     isAuthenticated: false,
@@ -8,6 +9,7 @@ const fakeAuth = {
     },
     signout(cb) {
       fakeAuth.isAuthenticated = false;
+      Cookies.set('userId', undefined)
       //localStorage.setItem('isAuthenticated', false)
       setTimeout(cb, 100);
     }

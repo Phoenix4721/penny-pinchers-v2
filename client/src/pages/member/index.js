@@ -16,9 +16,9 @@ function Member() {
 
     let history = useHistory();
     let cooks = Number(Cookies.get('userId'))
-    Cookies.set('userId', cooks)
+
     useEffect(() => {
-        console.log(cooks)
+     
         API.userGreeting({
             id: cooks
         })
