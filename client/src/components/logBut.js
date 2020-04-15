@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-
-  useHistory,
-
-} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import fakeAuth from '../utils/authContext'
 
 
@@ -14,8 +9,7 @@ import fakeAuth from '../utils/authContext'
     let login = () => {
       fakeAuth.authenticate(() => {
         history.replace('/member');
-     
-      });
+     });
     };
   
     return (

@@ -2,12 +2,7 @@ import React from "react";
 import fakeAuth from '../../utils/authContext'
 import LogOut from '../../components/logOutBut'
 import Cookies from 'js-cookie'
-import {
-    BrowserRouter as Router,
-  
-    useHistory,
-  
-  } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 
 function SetBills() {
@@ -16,12 +11,9 @@ function SetBills() {
     let login = (site) => {
       fakeAuth.authenticate(() => {
         history.replace(site);
-        console.log(history)
+        
       });
     };
-
-
-
 
     return (
         <div>

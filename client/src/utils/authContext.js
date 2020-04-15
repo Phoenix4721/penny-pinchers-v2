@@ -1,4 +1,3 @@
-import React from "react";
 import Cookies from 'js-cookie'
 
 const fakeAuth = {
@@ -12,7 +11,6 @@ const fakeAuth = {
       Cookies.remove('userId', { path: '' })
       Cookies.remove('userUn', { path: '' })
       Cookies.remove('userPw', { path: '' })
-      //localStorage.setItem('isAuthenticated', false)
       setTimeout(cb, 100);
     }
   };

@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import API from '../../utils/API'
 
 function Home() {
-    //states for username and password
+
     const email = useRef();
     const username = useRef();
     const password = useRef();
@@ -18,11 +18,8 @@ function Home() {
                 email: email.current.value,
                 password: password.current.value
             })
-            
         }
-
-      };
-
+    };
 
     return (
          <div>

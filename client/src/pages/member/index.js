@@ -3,20 +3,16 @@ import fakeAuth from '../../utils/authContext'
 import LogOut from '../../components/logOutBut'
 import API from '../../utils/API'
 import Cookies from 'js-cookie'
-import {
-    BrowserRouter as Router,
-  
-    useHistory,
-  
-  } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function Member() {
     const [user, setUser] = useState('')
     
-
     let history = useHistory();
+    
     let cooks = Number(Cookies.get('userId'))
     Cookies.set('url', '/member', { path: '' })
+    
     useEffect(() => {
      
         API.userGreeting({
