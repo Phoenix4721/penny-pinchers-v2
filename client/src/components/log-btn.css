@@ -1,0 +1,14 @@
+.log-btn {
+    width: 25vw;
+    background-color: green;
+    color: white; 
+    border: none; 
+    border-radius: 3%;
+    margin: 5vh auto;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+}
+.log-btn:hover {
+    background-color: white;
+    color: green;
+}

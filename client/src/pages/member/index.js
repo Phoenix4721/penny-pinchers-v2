@@ -1,6 +1,9 @@
 import React from "react";
 import fakeAuth from '../../utils/authContext'
 import LogOut from '../../components/logOutBut'
+import "./member.css"
+import logo from "./basic-logo.png"
+
 import {
     BrowserRouter as Router,
   
@@ -17,14 +20,21 @@ function Member() {
         console.log(history)
       });
     };
+    
+
+   
+
 
 
     return (
+      <body className="main-body">
         <div>
-            <p>hello <span className="name"></span></p>
-            <button onClick={() => {login('/setBills')}}>Set Your Bills</button>
+            <p className="main-div">Welcome!<span className="name"></span></p>
+            <button className="setbills-btn" onClick={() => {login('/setBills')}}>Set Your Bills</button>
             <LogOut />
         </div>
+        <img className="logo" src={logo}></img>
+      </body>
     )   
 }
 

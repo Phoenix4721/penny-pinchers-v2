@@ -6,14 +6,15 @@ import {
 
 } from "react-router-dom";
 import fakeAuth from '../utils/authContext'
+import "./logout-btn.css"
 
 function AuthButton() {
     let history = useHistory();
   
     return fakeAuth.isAuthenticated ? (
       <p>
-        Welcome!{" "}
-        <button
+        {/* Welcome!{" "} */}
+        <button className="logout-btn"
           onClick={() => {
             fakeAuth.signout(() => history.push("/"));
           }}

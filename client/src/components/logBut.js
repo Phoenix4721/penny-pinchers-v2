@@ -5,7 +5,10 @@ import {
   useHistory,
 
 } from "react-router-dom";
+
 import fakeAuth from '../utils/authContext'
+import './log-btn.css'
+
 
 
   function LoginPage() {
@@ -20,7 +23,7 @@ import fakeAuth from '../utils/authContext'
   
     return (
       <div>
-        <button onClick={login} type="submit">Log in</button>
+        <button onClick={login} type="submit" className="log-btn">Log in</button>
       </div>
     );
   }
