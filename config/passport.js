@@ -8,7 +8,7 @@ passport.use(new LocalStrategy(
      
     function(username, password, done) {
         
-      con.query('SELECT * FROM user WHERE username =?',[username],(err, user) => {
+      con.query('SELECT * FROM user WHERE username = ?',[username],(err, user) => {
             if (err) {
                 throw err
             } 

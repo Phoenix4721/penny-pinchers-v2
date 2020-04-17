@@ -7,7 +7,7 @@ const bcrypt = require('bcryptjs')
 
 const create = {
     create: function(username, email, password) {
-        con.query("SELECT COUNT(*) AS cnt FROM user WHERE email = ? AND username = ?" , 
+        con.query("SELECT COUNT (*) AS cnt FROM user WHERE email = ? AND username = ?" , 
         [email, username] , function(err , data){
    if(err){
        console.log(err);
@@ -15,7 +15,7 @@ const create = {
    else{
        if(data[0].cnt > 0){  
             return
-       }else{
+       }else {
         password = bcrypt.hashSync(password, bcrypt.genSaltSync(10), null);
         // bcrypt.compareSync(password)
         con.query('INSERT INTO user (username, email, password) VALUES (?, ?, ?)', 

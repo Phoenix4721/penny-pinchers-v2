@@ -5,7 +5,7 @@ const con = mysql.createConnection({
     port: 3306,
     user: 'root',
     password: 'password',
-    database: 'newPassport'
+    database: 'pp2_db'
 })
 
 con.connect(err => {

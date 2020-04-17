@@ -10,17 +10,18 @@ function Member() {
     
     let history = useHistory();
     
-    let cooks = Number(Cookies.get('userId'))
+    let cooks = Cookies.get('userId')
+    console.log(cooks)
     Cookies.set('url', '/member', { path: '' })
     
     useEffect(() => {
-     
+
         API.userGreeting({
-            id: cooks
+            id: Number(cooks)
         })
         .then(res => {
-           
-           setUser(res.data[0].username)
+           // console.log(res)
+          setUser(res.data[0].username)
 
         })
     }, [])

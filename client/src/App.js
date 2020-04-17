@@ -7,8 +7,9 @@ import SetBill from "./pages/setBill"
 import fakeAuth from './utils/authContext'
 
 
+
 function App() {
-  
+
 function PrivateRoute({ children, ...rest }) {
  
     return (
@@ -34,28 +35,29 @@ function PrivateRoute({ children, ...rest }) {
 
 
   return (
-   
-    <Router>
-      <div>
-        <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route> 
-        <Route  path="/login">
-          <Home />
-        </Route>
-        <Route  path="/signup">
-          <Signup />
-        </Route>
-        <PrivateRoute  path="/member">
-          <Member />
-        </PrivateRoute>
-        <PrivateRoute  path="/setBills">
-          <SetBill />
-        </PrivateRoute>
-        </Switch>
-      </div>
-    </Router>
+
+      <Router>
+        <div>
+          <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route> 
+          <Route  path="/login">
+            <Home />
+          </Route>
+          <Route  path="/signup">
+            <Signup />
+          </Route>
+          <PrivateRoute  path="/member">
+            <Member />
+          </PrivateRoute>
+          <PrivateRoute  path="/setBills">
+            <SetBill />
+          </PrivateRoute>
+          </Switch>
+        </div>
+      </Router>
+    
  
   );
   

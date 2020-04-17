@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import API from '../../utils/API'
 import LogBut from '../../components/logBut'
 import Cookies from 'js-cookie'
@@ -7,8 +7,11 @@ import fakeAuth from '../../utils/authContext'
 
 
 function Home() {
-    const username = useRef();
-    const password = useRef();
+    // const username = useRef();
+    // const password = useRef();
+
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
     
     let un = Cookies.get('userUn')
     let pw = Cookies.get('userPw')
@@ -43,16 +46,18 @@ function Home() {
 
     }, [])
     
-    const handleSubmit = e => {
+    function handleSubmit(e) {
         e.preventDefault();
+
         API.login({
-            username: username.current.value,
-            password: password.current.value
+            username: username,
+            password: password
         })
         .then(res => {
-            Cookies.set('userId', res.data.id, { path: '' })
+            console.log(res.data)
+            Cookies.set('userId', res.data.userId, { path: '' })
             Cookies.set('userUn', res.data.username, { path: '' })
-            Cookies.set('userPw', password.current.value, { path: '' })
+            Cookies.set('userPw', password, { path: '' })
         })
         .catch(err => {
             if (err) {
@@ -72,7 +77,8 @@ function Home() {
                 type="text"
                 placeholder="Username"
                 name="username"
-                required ref={username}
+                required 
+                onChange={e => setUsername(e.target.value)}
                 />
 
                 <input 
@@ -80,7 +86,8 @@ function Home() {
                 type="password"
                 placeholder="Password"
                 name="password"
-                required ref={password}
+                required 
+                onChange={e => setPassword(e.target.value)}
                 />   
 
                 <LogBut />     

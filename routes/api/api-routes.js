@@ -44,7 +44,7 @@ router.get('/logout', (req, res) => {
 })
 
 router.post('/api/user', (req, res) => {
-  con.query("SELECT * FROM user WHERE id = ?", [req.body.id], (err, result) => {
+  con.query("SELECT * FROM user WHERE userId = ?", [req.body.id], (err, result) => {
       
       res.json(result)
   })
