@@ -4,6 +4,8 @@ const session = require('express-session')
 const passport = require('./config/passport')
 const cors = require('cors')
 const user = require('./routes/api/api-routes')
+const io = require('socket.io')() 
+const socketDB = require('./config/chat.js')
 
 const app = express()
 const PORT = process.env.PORT || 7001
@@ -28,8 +30,32 @@ app.use(passport.session())
 
 app.use(user)
 
+io.on('connection', client => {
 
-app.listen(PORT, () => {
+  console.log('connected' + client.id)
+  client.emit('assign-socket', client.id)
+  // client.broadcast.emit('assign-remote', client.id)
+
+  // retrieve past logs from database 
+
+  client.on('send-chat-to-server', function(data) {
+      console.log('data' + data)
+      // io.to(data.remoteUser).emit('send-chat-to-client', data.message)
+      io.emit('send-chat-to-client', data.message)
+  })
+
+  client.on('disconnect', function(reason) {
+      if (reason === 'io server disconnect') {
+          client.connected()
+      }
+      
+      // save chat to database 
+      console.log('user disconected' + client.id)
+  })
+
+})
+
+io.listen(PORT, () => {
     console.log('http://localhost:' + PORT)
 })
 
