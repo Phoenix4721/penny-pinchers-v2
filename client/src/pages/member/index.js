@@ -20,7 +20,7 @@ function Member() {
             id: Number(cooks)
         })
         .then(res => {
-           // console.log(res)
+
           setUser(res.data[0].username)
 
         })

@@ -1,22 +1,25 @@
-import React, { useRef } from 'react'
+import React, { useState } from 'react'
 import API from '../../utils/API'
 
 function Home() {
 
-    const email = useRef();
-    const username = useRef();
-    const password = useRef();
-    const passwordCon = useRef();
+    const [email, setEmail] = useState('')
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+    const [passwordCon, setPasswordCon] = useState('')
 
-    const handleSubmit = e => {
+    function handleSubmit(e) {
         e.preventDefault();
-        if (password.current.value !== passwordCon.current.value) {
+        if (password !== passwordCon) {
   
         } else {
             API.createUser({
-                username: username.current.value,
-                email: email.current.value,
-                password: password.current.value
+                username: username,
+                email: email,
+                password: password
+            })
+            .then(() => {
+                document.getElementById("create-course-form").reset()
             })
         }
     };
@@ -26,14 +29,15 @@ function Home() {
   
                 <div>
                 
-                <form className="signUpForm" onSubmit={handleSubmit}>
+                <form id="create-course-form" className="signUpForm" onSubmit={handleSubmit}>
                 <h1 className="h3">Sign up</h1>
                     <input 
                     className="form-control"
                     type="text"
                     placeholder="Email"
                     name="email"
-                    required ref={email}
+                    required 
+                    onChange = {e => setEmail(e.target.value) }
                     />
 
                     <input 
@@ -41,7 +45,8 @@ function Home() {
                     type="text"
                     placeholder="Username"
                     name="username"
-                    required ref={username}
+                    required 
+                    onChange = {e => setUsername(e.target.value) }
                     />
 
                     <input 
@@ -50,7 +55,8 @@ function Home() {
                     placeholder="Password"
                     name="password"
                     id="password-input"
-                    required ref={password}
+                    required
+                    onChange = {e => setPassword(e.target.value) }
                     />   
 
                     <input 
@@ -59,7 +65,8 @@ function Home() {
                     placeholder="Confirm Password"
                     id="passwordCon-input"
                     name="confirm password"
-                    required ref={passwordCon}
+                    required 
+                    onChange = {e => setPasswordCon(e.target.value)}
                     />  
 
                     <button type="submit" className="subBut" >Sign Up</button>

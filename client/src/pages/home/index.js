@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import API from '../../utils/API'
 import LogBut from '../../components/logBut'
 import Cookies from 'js-cookie'
@@ -54,7 +54,7 @@ function Home() {
             password: password
         })
         .then(res => {
-            console.log(res.data)
+  
             Cookies.set('userId', res.data.userId, { path: '' })
             Cookies.set('userUn', res.data.username, { path: '' })
             Cookies.set('userPw', password, { path: '' })
