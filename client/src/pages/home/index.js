@@ -7,8 +7,6 @@ import fakeAuth from '../../utils/authContext'
 
 
 function Home() {
-    // const username = useRef();
-    // const password = useRef();
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -22,7 +20,6 @@ function Home() {
     useEffect(() => {
       
         if (un && pw) {
-           
             API.login({
                 username: un,
                 password: pw
@@ -30,8 +27,7 @@ function Home() {
             .then(() => {
                 fakeAuth.authenticate(() => {
                     history.replace(url);
-                 
-                  });
+                });
             })
 
             .catch(err => {
@@ -54,7 +50,6 @@ function Home() {
             password: password
         })
         .then(res => {
-  
             Cookies.set('userId', res.data.userId, { path: '' })
             Cookies.set('userUn', res.data.username, { path: '' })
             Cookies.set('userPw', password, { path: '' })
