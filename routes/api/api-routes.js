@@ -30,14 +30,14 @@ router.post('/user', [
      req.body.password,
   )
     
-    res.json('hiii')
+  res.json('hiii')
   
   
 });
 
 router.post('/api/login', passport.authenticate('local'), (req, res) => {
+      
       res.json(req.user[0])
-
 })
 
 

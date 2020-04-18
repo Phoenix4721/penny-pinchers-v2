@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import API from '../../utils/API'
 import { withGlobalState } from 'react-globally'
+import './style.css'
 
 function Home() {
 
@@ -8,6 +9,9 @@ function Home() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [passwordCon, setPasswordCon] = useState('')
+    const [progress, setProgress] = useState('')
+    const [val, setVal] = useState(0)
+    const [progBc, setProgBc] = useState('')
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -24,6 +28,21 @@ function Home() {
             })
         }
     };
+
+    function value(leng) {
+            console.log(leng * 10)
+            setVal(leng * 10)
+            console.log(val)
+            if(val >= 0) {
+                setProgBc('red')
+            } 
+            if(val >= 40) {
+                setProgBc('yellow')
+            } 
+            if(val >= 70) {
+                setProgBc('green')
+            } 
+    }
 
     return (
          <div>
@@ -57,7 +76,11 @@ function Home() {
                     name="password"
                     id="password-input"
                     required
-                    onChange = {e => setPassword(e.target.value) }
+                    onChange = {e => {
+                        setPassword(e.target.value)
+                        setProgress(e.target.value.length)
+                        value(e.target.value.length)
+                    }}
                     />   
 
                     <input 
@@ -70,6 +93,14 @@ function Home() {
                     onChange = {e => setPasswordCon(e.target.value)}
                     />  
 
+                    <div class="progressBar" style={{ opacity: progress > 0 ? 1 : 0}}>
+                        <div class="progress" style={{ opacity: progress > 0 ? 1 : 0, width: `${val}%`, backgroundColor: `${progBc}` }}>
+                        
+                        </div>
+                    </div>
+                    
+       
+                    
                     <button type="submit" className="subBut" >Sign Up</button>
         
                     <a className="signUp" href="/">Login</a>

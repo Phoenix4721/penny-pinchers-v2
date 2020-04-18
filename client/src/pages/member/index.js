@@ -15,18 +15,9 @@ function Member(props) {
     
     let history = useHistory();
     
-    let cooks = localStorage.getItem("myId")
-
-    Cookies.set('url', '/member', { path: '' })
-    
-
-
-    
     useEffect(() => {
-     
-          
         API.userGreeting({
-            id: 1
+            id: props.globalState.user.userId
         })
         .then(res => {
             setUser(res.data[0].username)

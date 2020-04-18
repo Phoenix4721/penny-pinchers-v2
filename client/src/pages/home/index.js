@@ -19,9 +19,9 @@ function Home(props) {
             username: username,
             password: password
         })
-        .then(async res => {
+        .then(res => {
+            console.log(res)
             if (res) {
-                console.log(res.data)
             props.setGlobalState({
                 user: res.data
             })
@@ -37,14 +37,13 @@ function Home(props) {
         })
         .catch(err => {
             if (err) {
-                throw err
+                console.log('noooo')
             }
         })
     };
 
  return (
      <div>
-
         <div>
             <form className="loginForm" onSubmit={handleSubmit}>
             <h1 className="h3">Sign in</h1>
@@ -69,10 +68,8 @@ function Home(props) {
                 <button type='submit'>Log In</button>    
                 <a className="signUp" href="/signup">Sign Up</a>
             </form>
-
-        
         </div>
-        </div>
+    </div>
        
     )   
 }

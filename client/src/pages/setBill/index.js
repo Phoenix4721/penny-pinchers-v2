@@ -8,8 +8,6 @@ import { withGlobalState } from 'react-globally'
 function SetBills(props) {
     let history = useHistory();
 
-    Cookies.set('url', '/setBills', { path: '' })
-    console.log(props.globalState.user.userId)
     let login = (site) => {
       fakeAuth.authenticate(() => {
         history.replace(site);

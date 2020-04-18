@@ -7,27 +7,33 @@ const con = require('../config/config')
 passport.use(new LocalStrategy(
      
     function(username, password, done) {
+        console.log(password)
         
       con.query('SELECT * FROM user WHERE username = ?',[username],(err, user) => {
-            if (err) {
-                throw err
-            } 
+            console.log(user === true)
+            if(!user) {
+                return done()
+            } else {
+                if (!user) {
+                
+                    return done(null, false, {
+                        message: 'Incorrect username'
+                    })
+                }
+                
+                 else if (!bcrypt.compareSync(password, user[0].password)) {
+                    return done(null, false, {
+                        message: 'Incorrect password'
+                    })
+                }
 
-           
-            if (!user) {
-                return done(null, false, {
-                    message: 'Incorrect username'
-                })
+                return done(null, user)
             }
-             else if (!bcrypt.compareSync(password, user[0].password)) {
-                return done(null, false, {
-                    message: 'Incorrect password'
-                })
-            }
-            
-             return done(null, user)
+
+
 
         })
+
     }  
 ))
 
