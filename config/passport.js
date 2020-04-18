@@ -7,9 +7,7 @@ const con = require('../config/config')
 passport.use(new LocalStrategy(
      
     function(username, password, done) {
-        console.log(password)
-        
-      con.query('SELECT * FROM user WHERE username = ?',[username],(err, user) => {
+        con.query('SELECT * FROM user WHERE username = ?',[username],(err, user) => {
             
                 if (!user.length) {
                 

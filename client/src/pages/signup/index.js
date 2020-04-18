@@ -28,8 +28,11 @@ function Home() {
     function handleSubmit(e) {
         e.preventDefault();
         if (!email.match(mailformat)) {
-            alert("You have entered an invalid email address!")
-            //document.getElementById("create-course-form").email.focus()
+            setAlert({
+                text:  'Uh oh! Invalid Email Address!',
+                there:  true,
+                type: 'danger'
+              })
             return
         } else if (password.length < 5) {
             setAlert({

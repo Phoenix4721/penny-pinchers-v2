@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import fakeAuth from '../../utils/authContext'
 import { withGlobalState } from 'react-globally'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Button, Form, FormGroup, Label, Input, FormText, Progress } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText, Progress, Alert } from 'reactstrap';
 import logo from "../logo2.png"
 import "./home.css"
 
@@ -30,7 +30,7 @@ function Home(props) {
             })
                  
             } else {
-                return 
+                return
             }
         })
         .then(() => {
@@ -40,10 +40,22 @@ function Home(props) {
         })
         .catch(err => {
             if (err) {
-                console.log('noooo')
+                setAlert({
+                    text:  "Uh oh! Email or Password is Incorrect!",
+                    there:  true,
+                    type: 'danger'
+                  })
             }
         })
     };
+
+    const [alertText, setAlert] = useState({
+        text: '',
+        there: false,
+        type: ''
+    })
+
+
 
  return (
     <body className="main-body" >
@@ -70,10 +82,14 @@ function Home(props) {
                 required 
                 onChange={e => setPassword(e.target.value)}
                 />   
-            </FormGroup> 
+            
             <div>   
                 <button type='submit' className='log-btn'>Log In</button>    
             </div>
+            <Alert color={alertText.type} style={{ opacity: !alertText.there ? 0 : 1}}>
+                        {alertText.text}
+            </Alert>
+            </FormGroup> 
                 <div className="signup-div">
                     <a className="signUp" href="/signup" >Sign up</a>
                     <a className="github-link" target="_blank" href="https://github.com/Phoenix4721/penny-pinchers-v2">Github</a>
