@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import API from '../../utils/API'
 import { withGlobalState } from 'react-globally'
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText, Alert } from 'reactstrap';
 import logo from "../logo2.png"
+//import Alert from '../../components/signUpAlert'
 import './style.css'
 
 function Home() {
@@ -15,7 +16,13 @@ function Home() {
     const [val, setVal] = useState(0)
     const [progBc, setProgBc] = useState('')
 
-    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+    //Alert text
+    const [alertText, setAlert] = useState({
+        text: '',
+        there: false
+    })
+
+    const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -24,10 +31,16 @@ function Home() {
             //document.getElementById("create-course-form").email.focus()
             return
         } else if (password.length < 5) {
-            alert("Password is too short!")
+            setAlert({
+              text:  'Password must be more than 5 characters!',
+              there:  true
+            })
             return
         } else if (password !== passwordCon) {
-            alert("Passwords Don't match!")
+            setAlert({
+                text:  "Password don't match! Make sure they do!",
+                there:  true
+              })
             return
         } else {
             search()
@@ -40,7 +53,7 @@ function Home() {
             email: email,
             password: password
         })
-        .then(() => {
+        .then(res => {
             document.getElementById("create-course-form").reset()
             setProgress(0)
         })
@@ -112,10 +125,12 @@ function Home() {
                     />  
                 
                     <div class="progressBar" style={{ opacity: progress > 0 ? 1 : 0}}>
-                        <div class="progress" style={{ opacity: progress > 0 ? 1 : 0, width: `${val}%`, backgroundColor: `${progBc}` }}>
-                        
-                        </div>
+                        <div class="progress" style={{ opacity: progress > 0 ? 1 : 0, width: `${val}%`, backgroundColor: `${progBc}` }} />
+                    
                     </div>
+                    <Alert color="danger" style={{ opacity: !alertText.there ? 0 : 1}}>
+                        {alertText.text}
+                    </Alert>
                     <button type="submit" className="subBut log-btn" >Sign Up</button>
                 </FormGroup>    
        
