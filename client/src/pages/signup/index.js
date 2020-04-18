@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import API from '../../utils/API'
+import { withGlobalState } from 'react-globally'
 
 function Home() {
 
@@ -80,4 +81,4 @@ function Home() {
     )   
 }
 
-export default Home
+export default withGlobalState(Home)

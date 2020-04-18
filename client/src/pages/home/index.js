@@ -1,46 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import API from '../../utils/API'
-import LogBut from '../../components/logBut'
-import Cookies from 'js-cookie'
 import { useHistory } from "react-router-dom";
 import fakeAuth from '../../utils/authContext'
+import { withGlobalState } from 'react-globally'
 
-
-function Home() {
+function Home(props) {
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    
-    let un = Cookies.get('userUn')
-    let pw = Cookies.get('userPw')
-    let url = Cookies.get('url')
-    
+
     let history = useHistory();
-    
-    useEffect(() => {
-      
-        if (un && pw) {
-            API.login({
-                username: un,
-                password: pw
-            })
-            .then(() => {
-                fakeAuth.authenticate(() => {
-                    history.replace(url);
-                });
-            })
 
-            .catch(err => {
-                if (err) {
-                    throw err
-                }
-            })
-        } else {
-            return
-        }
-        
-
-    }, [])
     
     function handleSubmit(e) {
         e.preventDefault();
@@ -49,10 +19,21 @@ function Home() {
             username: username,
             password: password
         })
-        .then(res => {
-            Cookies.set('userId', res.data.userId, { path: '' })
-            Cookies.set('userUn', res.data.username, { path: '' })
-            Cookies.set('userPw', password, { path: '' })
+        .then(async res => {
+            if (res) {
+                console.log(res.data)
+            props.setGlobalState({
+                user: res.data
+            })
+                 
+            } else {
+                return 
+            }
+        })
+        .then(() => {
+            fakeAuth.authenticate(() => {
+                history.replace('/member');
+             });
         })
         .catch(err => {
             if (err) {
@@ -84,8 +65,8 @@ function Home() {
                 required 
                 onChange={e => setPassword(e.target.value)}
                 />   
-
-                <LogBut />     
+                
+                <button type='submit'>Log In</button>    
                 <a className="signUp" href="/signup">Sign Up</a>
             </form>
 
@@ -96,4 +77,4 @@ function Home() {
     )   
 }
 
-export default Home
+export default withGlobalState(Home)

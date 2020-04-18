@@ -3,20 +3,30 @@ import fakeAuth from '../../utils/authContext'
 import LogOut from '../../components/logOutBut'
 import API from '../../utils/API'
 import Cookies from 'js-cookie'
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
+import { withGlobalState } from 'react-globally'
 
-function Member() {
+
+function Member(props) {
+
+    console.log(props.globalState.user.userId)
+    
     const [user, setUser] = useState('')
     
     let history = useHistory();
     
-    let cooks = Cookies.get('userId')
+    let cooks = localStorage.getItem("myId")
 
     Cookies.set('url', '/member', { path: '' })
     
+
+
+    
     useEffect(() => {
+     
+          
         API.userGreeting({
-            id: Number(cooks)
+            id: 1
         })
         .then(res => {
             setUser(res.data[0].username)
@@ -40,4 +50,4 @@ function Member() {
     )   
 }
 
-export default Member
+export default withGlobalState(Member)

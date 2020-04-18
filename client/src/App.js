@@ -8,6 +8,7 @@ import fakeAuth from './utils/authContext'
 
 
 
+
 function App() {
 
 function PrivateRoute({ children, ...rest }) {
@@ -34,9 +35,11 @@ function PrivateRoute({ children, ...rest }) {
 
 
 
+
   return (
 
       <Router>
+
         <div>
           <Switch>
           <Route exact path="/">
@@ -55,7 +58,9 @@ function PrivateRoute({ children, ...rest }) {
             <SetBill />
           </PrivateRoute>
           </Switch>
+          
         </div>
+
       </Router>
     
  

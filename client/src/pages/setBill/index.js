@@ -3,11 +3,13 @@ import fakeAuth from '../../utils/authContext'
 import LogOut from '../../components/logOutBut'
 import Cookies from 'js-cookie'
 import { useHistory } from "react-router-dom";
+import { withGlobalState } from 'react-globally'
 
-
-function SetBills() {
+function SetBills(props) {
     let history = useHistory();
+
     Cookies.set('url', '/setBills', { path: '' })
+    console.log(props.globalState.user.userId)
     let login = (site) => {
       fakeAuth.authenticate(() => {
         history.replace(site);
@@ -24,4 +26,4 @@ function SetBills() {
     )   
 }
 
-export default SetBills
+export default withGlobalState(SetBills)
