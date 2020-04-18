@@ -19,7 +19,8 @@ function Home() {
     //Alert text
     const [alertText, setAlert] = useState({
         text: '',
-        there: false
+        there: false,
+        type: ''
     })
 
     const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
@@ -33,13 +34,15 @@ function Home() {
         } else if (password.length < 5) {
             setAlert({
               text:  'Password must be more than 5 characters!',
-              there:  true
+              there:  true,
+              type: 'danger'
             })
             return
         } else if (password !== passwordCon) {
             setAlert({
                 text:  "Password don't match! Make sure they do!",
-                there:  true
+                there:  true,
+                type: 'danger'
               })
             return
         } else {
@@ -54,9 +57,30 @@ function Home() {
             password: password
         })
         .then(res => {
-            console.log(res)
-            document.getElementById("create-course-form").reset()
-            setProgress(0)
+            if(res.data === 'user') {
+                setAlert({
+                    text:  "Uh oh! This username is taken!",
+                    there:  true,
+                    type: 'danger'
+                  })
+            } else if(res.data === 'email') {
+                setAlert({
+                    text:  "Uh oh! This email is already in use!",
+                    there:  true,
+                    type: 'danger'
+                  })
+            } else if(res.data === 'userCreated') {
+                setAlert({
+                    text:  "Welcome! Go back to login and login!",
+                    there:  true,
+                    type: 'success'
+                  })
+                  document.getElementById("create-course-form").reset()
+                  setProgress(0)
+            } else {
+                return
+            }
+
         })
     }
 
@@ -129,7 +153,7 @@ function Home() {
                         <div class="progress" style={{ opacity: progress > 0 ? 1 : 0, width: `${val}%`, backgroundColor: `${progBc}` }} />
                     
                     </div>
-                    <Alert color="danger" style={{ opacity: !alertText.there ? 0 : 1}}>
+                    <Alert color={alertText.type} style={{ opacity: !alertText.there ? 0 : 1}}>
                         {alertText.text}
                     </Alert>
                     <button type="submit" className="subBut log-btn" >Sign Up</button>

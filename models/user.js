@@ -28,7 +28,7 @@ const create = {
                     if (err) {
                         throw err
                     }
-                    resolve(data)
+                    resolve('userCreated')
         
                 }) 
             }
