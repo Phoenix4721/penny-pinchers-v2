@@ -54,6 +54,7 @@ function Home() {
             password: password
         })
         .then(res => {
+            console.log(res)
             document.getElementById("create-course-form").reset()
             setProgress(0)
         })

@@ -6,19 +6,20 @@ const bcrypt = require('bcryptjs')
 
 const create = {
     create: function(username, email, password) {
+        return new Promise(function(resolve, reject) {
     con.query("SELECT COUNT (*) AS cnt FROM user WHERE username = ?" , 
         [username] , function(err , data){
     if(err){
-       throw err
+        reject(err)
     }   
    else{
        if(data[0].cnt > 0){  
-          return console.log('hiii')
+           resolve('user')
        }else {
         con.query("SELECT COUNT (*) AS cnt FROM user WHERE email = ?" , 
         [email] , function(err , data){
             if(data[0].cnt > 0){  
-                return console.log('hiii')
+                resolve('email')
            }else {
                 password = bcrypt.hashSync(password, bcrypt.genSaltSync(10), null);
                 
@@ -27,15 +28,16 @@ const create = {
                     if (err) {
                         throw err
                     }
+                    resolve(data)
         
                 }) 
-           }
+            }
         })
-                    
        }
-   }
-})
-    }
+     }
+   })
+  })
+ }
 }
 
 module.exports = create

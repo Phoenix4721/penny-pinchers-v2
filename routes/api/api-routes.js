@@ -13,10 +13,8 @@ router.post('/user', [
   check('email').isEmail(),
   check('username').isLength({ min: 5}),
   check('password').isLength({ min: 5 })
-  
-  //check('passwordCon', 'Password do not match').equals('password')
+
 ], (req, res) => {
-  
   
   const errors = validationResult(req);
   console.log(errors)
@@ -29,11 +27,11 @@ router.post('/user', [
      req.body.email,
      req.body.password,
   )
-    
-  res.json('hiii')
-  
-  
+  .then(result => {
+    res.json(result)
+  })
 });
+
 
 router.post('/api/login', passport.authenticate('local'), (req, res) => {
       
