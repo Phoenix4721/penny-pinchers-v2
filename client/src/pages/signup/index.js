@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import API from '../../utils/API'
 import { withGlobalState } from 'react-globally'
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import logo from "../logo2.png"
 import './style.css'
 
 function Home() {
@@ -58,14 +60,14 @@ function Home() {
     }
 
     return (
-         <div>
-  
-                <div>
-                
-                <form id="create-course-form" className="signUpForm" onSubmit={handleSubmit}>
-                <h1 className="h3">Sign up</h1>
-                    <input 
-                    className="form-control"
+        <body className="main-body" >
+        <Form className="loginForm signUpForm" id="create-course-form" onSubmit={handleSubmit}>
+                <h1 className="h3"><img className="logo" src={logo}></img></h1>
+
+                <FormGroup className="form-group">
+                    <Input 
+                    className="form-control email-input"
+                    id="email"
                     type="email"
                     placeholder="Email"
                     name="email"
@@ -73,8 +75,9 @@ function Home() {
                     onChange = {e => setEmail(e.target.value) }
                     />
 
-                    <input 
-                    className="form-control"
+                    <Input
+                    className="form-control username-input"
+                    id="username"
                     type="text"
                     placeholder="Username"
                     name="username"
@@ -82,8 +85,9 @@ function Home() {
                     onChange = {e => setUsername(e.target.value) }
                     />
 
-                    <input 
-                    className="form-control"
+                    <Input
+                    className="form-control password-input"
+                    id="password"
                     type="password"
                     placeholder="Password"
                     name="password"
@@ -96,8 +100,9 @@ function Home() {
                     }}
                     />   
 
-                    <input 
-                    className="form-control"
+                    <Input
+                    className="form-control passwordCon-input"
+                    id="passwordCon"
                     type="password"
                     placeholder="Confirm Password"
                     id="passwordCon-input"
@@ -105,23 +110,27 @@ function Home() {
                     required 
                     onChange = {e => setPasswordCon(e.target.value)}
                     />  
-
+                
                     <div class="progressBar" style={{ opacity: progress > 0 ? 1 : 0}}>
                         <div class="progress" style={{ opacity: progress > 0 ? 1 : 0, width: `${val}%`, backgroundColor: `${progBc}` }}>
                         
                         </div>
                     </div>
-                    
+                    <button type="submit" className="subBut log-btn" >Sign Up</button>
+                </FormGroup>    
        
                     
-                    <button type="submit" className="subBut" >Sign Up</button>
+
         
-                    <a className="signUp" href="/">Login</a>
+                    <div className="signup-div">
+                        <a className="signUp" href="/" >Log in</a>
+                        <a className="github-link" target="_blank" href="https://github.com/Phoenix4721/penny-pinchers-v2">Github</a>
+                    </div>
 
-                </form>
-
-                </div>
-        </div>
+                
+            </Form>
+            </body>  
+          
     )   
 }
 

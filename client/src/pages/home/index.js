@@ -76,7 +76,7 @@ function Home(props) {
             </div>
                 <div className="signup-div">
                     <a className="signUp" href="/signup" >Sign up</a>
-                    <a className="github-link" href="https://github.com/Phoenix4721/penny-pinchers-v2">Github</a>
+                    <a className="github-link" target="_blank" href="https://github.com/Phoenix4721/penny-pinchers-v2">Github</a>
                 </div>
             </Form>
     </body>
