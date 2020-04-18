@@ -10,11 +10,8 @@ passport.use(new LocalStrategy(
         console.log(password)
         
       con.query('SELECT * FROM user WHERE username = ?',[username],(err, user) => {
-            console.log(user === true)
-            if(!user) {
-                return done()
-            } else {
-                if (!user) {
+            
+                if (!user.length) {
                 
                     return done(null, false, {
                         message: 'Incorrect username'
@@ -28,7 +25,7 @@ passport.use(new LocalStrategy(
                 }
 
                 return done(null, user)
-            }
+            
 
 
 

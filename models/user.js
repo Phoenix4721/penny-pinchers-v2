@@ -9,10 +9,9 @@ const create = {
     con.query("SELECT COUNT (*) AS cnt FROM user WHERE username = ?" , 
         [username] , function(err , data){
     if(err){
-       return
+       throw err
     }   
    else{
-       
        if(data[0].cnt > 0){  
           return console.log('hiii')
        }else {
@@ -22,7 +21,7 @@ const create = {
                 return console.log('hiii')
            }else {
                 password = bcrypt.hashSync(password, bcrypt.genSaltSync(10), null);
-                // bcrypt.compareSync(password)
+                
                 con.query('INSERT INTO user (username, email, password) VALUES (?, ?, ?)', 
                 [username, email, password], (err, data) => {
                     if (err) {
