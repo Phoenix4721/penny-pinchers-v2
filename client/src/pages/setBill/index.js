@@ -1,7 +1,6 @@
 import React from "react";
 import fakeAuth from '../../utils/authContext'
 import LogOut from '../../components/logOutBut'
-import Cookies from 'js-cookie'
 import { useHistory } from "react-router-dom";
 import { withGlobalState } from 'react-globally'
 

@@ -2,15 +2,12 @@ import React, { useEffect, useState } from "react";
 import fakeAuth from '../../utils/authContext'
 import LogOut from '../../components/logOutBut'
 import API from '../../utils/API'
-import Cookies from 'js-cookie'
-import { useHistory, Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { withGlobalState } from 'react-globally'
 
 
 function Member(props) {
 
-    console.log(props.globalState.user.userId)
-    
     const [user, setUser] = useState('')
     
     let history = useHistory();
@@ -24,13 +21,11 @@ function Member(props) {
         })
     }, [])
 
- 
     let login = (site) => {
       fakeAuth.authenticate(() => {
         history.replace(site);
       });
     };
-
 
     return (
         <div>

@@ -20,7 +20,6 @@ function Home(props) {
             password: password
         })
         .then(res => {
-            console.log(res)
             if (res) {
             props.setGlobalState({
                 user: res.data
