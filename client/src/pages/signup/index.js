@@ -156,10 +156,11 @@ function Home() {
                         <div class="progress" style={{ opacity: progress > 0 ? 1 : 0, width: `${val}%`, backgroundColor: `${progBc}` }} />
                     
                     </div>
+
+                    <button type="submit" className="subBut log-btn" >Sign Up</button>
                     <Alert color={alertText.type} style={{ opacity: !alertText.there ? 0 : 1}}>
                         {alertText.text}
                     </Alert>
-                    <button type="submit" className="subBut log-btn" >Sign Up</button>
                 </FormGroup>    
        
                     
