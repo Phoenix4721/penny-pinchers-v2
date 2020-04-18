@@ -13,26 +13,39 @@ function Home() {
     const [val, setVal] = useState(0)
     const [progBc, setProgBc] = useState('')
 
+    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+
     function handleSubmit(e) {
         e.preventDefault();
-        if (password !== passwordCon) {
-  
+        if (!email.match(mailformat)) {
+            alert("You have entered an invalid email address!")
+            //document.getElementById("create-course-form").email.focus()
+            return
+        } else if (password.length < 5) {
+            alert("Password is too short!")
+            return
+        } else if (password !== passwordCon) {
+            alert("Passwords Don't match!")
+            return
         } else {
-            API.createUser({
-                username: username,
-                email: email,
-                password: password
-            })
-            .then(() => {
-                document.getElementById("create-course-form").reset()
-            })
+            search()
         }
     };
 
+    function search() {
+        API.createUser({
+            username: username,
+            email: email,
+            password: password
+        })
+        .then(() => {
+            document.getElementById("create-course-form").reset()
+            setProgress(0)
+        })
+    }
+
     function value(leng) {
-            console.log(leng * 10)
             setVal(leng * 10)
-            console.log(val)
             if(val >= 0) {
                 setProgBc('red')
             } 
@@ -53,7 +66,7 @@ function Home() {
                 <h1 className="h3">Sign up</h1>
                     <input 
                     className="form-control"
-                    type="text"
+                    type="email"
                     placeholder="Email"
                     name="email"
                     required 
