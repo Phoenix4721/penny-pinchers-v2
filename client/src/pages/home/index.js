@@ -6,6 +6,7 @@ import logo from "../logo2.png"
 import "./home.css"
 
 
+
 function Home() {
 
     const username = useRef();
@@ -23,8 +24,6 @@ function Home() {
                 throw err
             }
         })
-
-        
       };
 
  return (
