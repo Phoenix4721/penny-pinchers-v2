@@ -3,6 +3,10 @@ import API from '../../utils/API'
 import { useHistory } from "react-router-dom";
 import fakeAuth from '../../utils/authContext'
 import { withGlobalState } from 'react-globally'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { Button, Form, FormGroup, Label, Input, FormText, Progress } from 'reactstrap';
+import logo from "../logo2.png"
+import "./home.css"
 
 function Home(props) {
 
@@ -42,33 +46,40 @@ function Home(props) {
     };
 
  return (
-     <div>
-        <div>
-            <form className="loginForm" onSubmit={handleSubmit}>
-            <h1 className="h3">Sign in</h1>
-                <input 
-                className="form-control"
+    <body className="main-body" >
+      <Form className="loginForm" onSubmit={handleSubmit}>
+        <h1 className="h3"><img className="logo" src={logo}></img></h1>
+             <FormGroup className="form-group">
+  
+                <Input
+                className="form-control username-input"
                 type="text"
                 placeholder="Username"
                 name="username"
+                id="username"
                 required 
                 onChange={e => setUsername(e.target.value)}
                 />
 
-                <input 
-                className="form-control"
+                <Input
+                className="form-control password-input"
                 type="password"
                 placeholder="Password"
+                id="password"
                 name="password"
                 required 
                 onChange={e => setPassword(e.target.value)}
                 />   
-                
-                <button type='submit'>Log In</button>    
-                <a className="signUp" href="/signup">Sign Up</a>
-            </form>
-        </div>
-    </div>
+            </FormGroup> 
+            <div>   
+                <button type='submit' className='log-btn'>Log In</button>    
+            </div>
+                <div className="signup-div">
+                    <a className="signUp" href="/signup" >Sign up</a>
+                    <a className="github-link" href="https://github.com/Phoenix4721/penny-pinchers-v2">Github</a>
+                </div>
+            </Form>
+    </body>
        
     )   
 }
