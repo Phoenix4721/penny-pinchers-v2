@@ -35,5 +35,24 @@ export default {
         data: postdata
       })
 
-  }
+  },
+
+  budget: function(postdata) {
+    return axios({
+        method: 'post',
+        headers: { 'content-type': 'application/json' },
+        url: 'http://localhost:7001/setBudget',
+        data: postdata
+      })
+  },
+  
+  bills: function(postdata) {
+    return axios({
+        method: 'post',
+        headers: { 'content-type': 'application/json' },
+        url: 'http://localhost:7001/setBills',
+        data: postdata
+      })
+  },
+
 };

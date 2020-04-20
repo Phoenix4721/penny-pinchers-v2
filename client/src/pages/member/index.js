@@ -33,6 +33,7 @@ function Member(props) {
         <body className="main-body">
         <div className="member-div">
             <p className="main-div">Welcome! {user}<span className="name"></span></p>
+            <button className="setbills-btn" onClick={() => {login('/setBudget')}}>Set Your Budgets</button>
             <button className="setbills-btn" onClick={() => {login('/setBills')}}>Set Your Bills</button>
             <LogOut />
         </div>

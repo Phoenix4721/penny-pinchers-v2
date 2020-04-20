@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-d
 import Home from "./pages/home";
 import Signup from "./pages/signup";
 import Member from "./pages/member"
-import SetBill from "./pages/setBill"
 import fakeAuth from './utils/authContext'
-
+import SetBudget from "./pages/setBudget"
+import SetBills from "./pages/setBills"
 
 
 
@@ -54,8 +54,11 @@ function PrivateRoute({ children, ...rest }) {
           <PrivateRoute  path="/member">
             <Member />
           </PrivateRoute>
+          <PrivateRoute  path="/setBudget">
+            <SetBudget />
+          </PrivateRoute>
           <PrivateRoute  path="/setBills">
-            <SetBill />
+            <SetBills />
           </PrivateRoute>
           </Switch>
           

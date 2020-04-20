@@ -5,6 +5,8 @@ const router = express.Router()
 const passport = require('../../config/passport')
 const db = require('../../models/user')
 const con = require('../../config/config')
+const set = require('../../models/setBudget')
+const bill = require('../../models/setBills')
 //const isAuthenticated = require('../config/middleware/isAuthenticated')
 
 const { check, validationResult } = require('express-validator');
@@ -52,6 +54,23 @@ router.post('/api/user', (req, res) => {
   
 })
 
+router.post('/setBudget',(req, res) => {
+  set.set(
+    req.body.groceriesBudget,
+    req.body.transportationBudget,
+    req.body.diningBudget,
+    req.body.shoppingBudget
+ )
+});
+
+router.post('/setBills',(req, res) => {
+  bill.set(
+    req.body.groceries,
+    req.body.transportation,
+    req.body.dining,
+    req.body.shopping
+ )
+});
 
 
 module.exports = router
