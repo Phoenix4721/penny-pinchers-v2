@@ -4,7 +4,7 @@ import LogOut from '../../components/logOutBut'
 import Cookies from 'js-cookie'
 import { useHistory } from "react-router-dom";
 import { withGlobalState } from 'react-globally'
-import { InputGroup, InputGroupAddon, InputGroupText, Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { InputGroup, InputGroupAddon, Col, Row, Button, Form, Label, Input } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import API from '../../utils/API';
 import './setbill.css'
@@ -96,6 +96,7 @@ return (
 <Button color="secondary" size="sm" onClick={handleSubmit} method="user" className="right">Add Bills</Button>
   </Col>
 </Row>
+<Button className="setbills-btn" onClick={() => {login('/setBudget')}}>Set Your Budgets</Button>
 <LogOut />
 </Form>
 )   

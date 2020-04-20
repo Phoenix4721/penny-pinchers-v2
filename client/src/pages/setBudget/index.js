@@ -3,10 +3,10 @@ import fakeAuth from '../../utils/authContext'
 import LogOut from '../../components/logOutBut'
 import Cookies from 'js-cookie'
 import { useHistory } from "react-router-dom";
-import { InputGroup, InputGroupAddon, InputGroupText, Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { InputGroup, InputGroupAddon, Col, Row, Button, Form, Label, Input } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import API from '../../utils/API';
-import axios from 'axios';
+
 
 
 // Dustin Was Here
@@ -96,6 +96,7 @@ function SetBudget (props) {
     <Button color="secondary" size="sm" onClick={handleSubmit} method="user" className="right">Submit Budgets</Button>
       </Col>
     </Row>
+    <Button className="setbills-btn" onClick={() => {login('/setBills')}}>Set Your Bills</Button>
     <LogOut />
   </Form>
     )   
