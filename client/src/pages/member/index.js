@@ -6,7 +6,8 @@ import { useHistory } from "react-router-dom";
 import { withGlobalState } from 'react-globally'
 import "./member.css"
 import logo from "./white-logo.png"
-
+import openSocket from 'socket.io-client';
+const socket = openSocket('http://localhost:7001');
 
 function Member(props) {
 
@@ -20,6 +21,7 @@ function Member(props) {
         })
         .then(res => {
             setUser(res.data[0].username)
+            socket.emit('log-user-info', {socket: socket.id, username: res.data[0].username})
         })
     }, [])
 
