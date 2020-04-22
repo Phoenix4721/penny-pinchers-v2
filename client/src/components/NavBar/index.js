@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { Nav, Navbar, Collapse, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, NavbarBrand, NavbarToggler, NavbarText } from 'reactstrap';
 import fakeAuth from '../../utils/authContext'
 import { useHistory } from "react-router-dom";
+import './nav.css'
 
 
 function NavbarTop(props) {
@@ -26,7 +27,7 @@ function NavbarTop(props) {
 
   return (
 <div>
-<Navbar color="light" light expand="md">
+<Navbar expand="md">
         <NavbarBrand onClick={() => {login('/member')}} className="hii">Penny Pinchers</NavbarBrand>
         <NavbarToggler onClick={toggle} />
        { show ? <Collapse isOpen={isOpen} navbar>

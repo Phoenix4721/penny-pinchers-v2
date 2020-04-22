@@ -75,8 +75,8 @@ function ChatApp(props) {
                 <ul>
                     {messages.map(item => <li>{item}</li>)}
                 </ul>
-                <input value={message} name='message' placeholder='Chat' onChange={handleChange}/>
-                <button onClick={() => sendChat()}>Send</button>
+                <input className="msg" value={message} name='message' placeholder='Chat' onChange={handleChange}/>
+                <button className="sendMsg" onClick={() => sendChat()}>Send</button>
             </div>
             </Tabs>
         </div>

@@ -29,7 +29,7 @@ function Friends(props) {
                 {friendList.map(item => {
                     // if (item.socket) {
                         return (
-                            <li onClick={() => switchChat(item.username)}>{item.username}</li>
+                            <li className="friendList"onClick={() => switchChat(item.username)}>{item.username}</li>
                         )
                     // }
                 })}

@@ -9,7 +9,7 @@ function AuthButton() {
   return fakeAuth.isAuthenticated ? (
     <p>
       {/* Welcome!{" "} */}
-      <a className="bg-dark list-group-item list-group-item-action logout-btn"
+      <a className=" list-group-item list-group-item-action logout-btn"
         onClick={() => {
           fakeAuth.signout(() => history.push("/"));
         }}

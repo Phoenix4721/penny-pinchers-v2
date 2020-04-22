@@ -1,10 +1,47 @@
 .chat-main {
     position: absolute;
-    bottom: 0;
-    right: 0;
+    
+    left: 0;
     margin: 0px 50px 30px 0px;
     padding: 10px;
     max-height: 70%;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.699);
     overflow: scroll;
+    height: 44.5%;
+    width: 300px;
+    margin-bottom: 0;
+    margin-top: -16px;
+}
+
+.friendList {
+    text-decoration: none;
+    list-style: none;
+    padding: 10px 0px;
+    width: 250px;
+    margin-left: -28px;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+
+.sendMsg {
+    width: 300px;
+    margin-left: -10px;
+    background-color: rgba(121, 185, 112, 0.568);
+    transition: .2s ease-in-out;
+}
+
+.sendMsg:hover {
+    background-color: rgba(120, 185, 112, 0.267)
+}
+
+.msg {
+    margin-left: -10px;
+    margin-top: 63px;
+    width: 300px;
+    height: 100px;
+    text-align: left;
+}
+
+.friendList:hover{
+    font-size: 1.2em;
 }
