@@ -7,7 +7,7 @@ import fakeAuth from '../../utils/authContext'
 import { useHistory } from "react-router-dom";
 import ChatApp from '../ChatApp/ChatApp'
 
-function App(props) {
+function SideNav(props) {
 
     let history = useHistory();
 
@@ -21,59 +21,59 @@ function App(props) {
   return (
 <div className="mainWrapper">
 
-<div class="row" id="body-row">
+<div className="row" id="body-row">
 
-    <div id="sidebar-container" class="sidebar-expanded d-none d-md-block">
+    <div id="sidebar-container" className="sidebar-expanded d-none d-md-block">
 
-        <ul class="list-group">
+        <ul className="list-group">
 
-            <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+            <li className="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
                 <small>MAIN MENU</small>
             </li>
 
-            <a onClick={() => {login('/setBudget')}} data-toggle="collapse" aria-expanded="false" class="hii  list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="fa fa-dashboard fa-fw mr-3"></span>
-                    <span class="menu-collapsed">Budget</span>
+            <a onClick={() => {login('/setBudget')}} data-toggle="collapse" aria-expanded="false" className="hii  list-group-item list-group-item-action flex-column align-items-start">
+                <div className="d-flex w-100 justify-content-start align-items-center">
+                    <span className="fa fa-dashboard fa-fw mr-3"></span>
+                    <span className="menu-collapsed">Budget</span>
                     
                 </div>
             </a>
 
         
-            <a onClick={() => {login('/setBills')}}  data-toggle="collapse" aria-expanded="false" class="hii  list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="fa fa-user fa-fw mr-3"></span>
-                    <span class="menu-collapsed">Bills</span>
+            <a onClick={() => {login('/setBills')}}  data-toggle="collapse" aria-expanded="false" className="hii  list-group-item list-group-item-action flex-column align-items-start">
+                <div className="d-flex w-100 justify-content-start align-items-center">
+                    <span className="fa fa-user fa-fw mr-3"></span>
+                    <span className="menu-collapsed">Bills</span>
                     
                 </div>
             </a>
   
             
-            <a href="#" class=" list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="fa fa-tasks fa-fw mr-3"></span>
-                    <span class="menu-collapsed">Team</span>
+            <a href="#" className=" list-group-item list-group-item-action">
+                <div className="d-flex w-100 justify-content-start align-items-center">
+                    <span className="fa fa-tasks fa-fw mr-3"></span>
+                    <span className="menu-collapsed">Team</span>
                 </div>
             </a>
 
-            <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+            <li className="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
                 <small>OPTIONS</small>
             </li>
   
-            <a href="#" class=" list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="fa fa-calendar fa-fw mr-3"></span>
-                    <span class="menu-collapsed">Goals</span>
+            <a href="#" className=" list-group-item list-group-item-action">
+                <div className="d-flex w-100 justify-content-start align-items-center">
+                    <span className="fa fa-calendar fa-fw mr-3"></span>
+                    <span className="menu-collapsed">Goals</span>
                 </div>
             </a>
-            <a href="#" class=" list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="fa fa-envelope-o fa-fw mr-3"></span>
-                    <span class="menu-collapsed">Messages<span class="badge badge-pill badge-primary ml-2">5</span></span>
+            <a href="#" className=" list-group-item list-group-item-action">
+                <div className="d-flex w-100 justify-content-start align-items-center">
+                    <span className="fa fa-envelope-o fa-fw mr-3"></span>
+                    <span className="menu-collapsed">Messages<span className="badge badge-pill badge-primary ml-2">5</span></span>
                 </div>
             </a>
 
-            <li class="list-group-item sidebar-separator menu-collapsed"></li>
+            <li className="list-group-item sidebar-separator menu-collapsed"></li>
 
             <Logout />
 
@@ -86,4 +86,4 @@ function App(props) {
   );
 }
 
-export default App;
+export default SideNav;

@@ -28,7 +28,7 @@ function Member(props) {
 
           <NavBar />
 
-          <Sidenav/>
+      
         <div className="member-div">
             <p className="main-div">Welcome! {user}<span className="name"></span></p>
 

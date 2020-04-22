@@ -4,6 +4,8 @@ import { Nav, Navbar, Collapse, NavItem, NavLink, UncontrolledDropdown, Dropdown
 import fakeAuth from '../../utils/authContext'
 import { useHistory } from "react-router-dom";
 import './nav.css'
+import SideNav from '../SideNav'
+import ChatApp from '../ChatApp/ChatApp'
 
 
 function NavbarTop(props) {
@@ -27,7 +29,7 @@ function NavbarTop(props) {
 
   return (
 <div>
-<Navbar expand="md">
+    <Navbar expand="md">
         <NavbarBrand onClick={() => {login('/member')}} className="hii">Penny Pinchers</NavbarBrand>
         <NavbarToggler onClick={toggle} />
        { show ? <Collapse isOpen={isOpen} navbar>
@@ -60,6 +62,8 @@ function NavbarTop(props) {
   </Collapse> : undefined}
       </Navbar>
 
+
+    {show ? <div /> : <SideNav /> }
 </div>
   );
 }
