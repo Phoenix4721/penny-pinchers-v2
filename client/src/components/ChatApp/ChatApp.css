@@ -23,6 +23,16 @@
     transition: .3s ease-in-out;
 }
 
+.friendListOff {
+    text-decoration: none;
+    list-style: none;
+    padding: 10px 0px;
+    width: 250px;
+    margin-left: -28px;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+
 .sendMsg {
     width: 300px;
     margin-left: -10px;
@@ -44,4 +54,15 @@
 
 .friendList:hover{
     font-size: 1.2em;
+}
+
+.tab-content{
+    overflow: scroll;
+}
+
+.onlineHead {
+    border: 2px groove rgba(226, 226, 226, 0.466);
+    padding: 2px;
+    background-color: rgba(255, 255, 255, 0.685);
+    text-align: left;
 }

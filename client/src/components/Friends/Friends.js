@@ -11,7 +11,7 @@ function Friends(props) {
             // socket.emit('request-friends-list') //its probably always emitting the event 
         setInterval(function() {
             socket.emit('request-friends-list')
-        }, 13000)
+        }, 100)
     }, [])
 
     socket.on('send-friends-list', function(data) {
@@ -24,16 +24,23 @@ function Friends(props) {
     }
 
     return (
-        <div>
+        <div className="onOff">
+          <div className="online">
+            <h4 className="onlineHead">Online</h4>
             <ul>
-                {friendList.map(item => {
-                    // if (item.socket) {
-                        return (
-                            <li className="friendList"onClick={() => switchChat(item.username)}>{item.username}</li>
-                        )
-                    // }
-                })}
+                {friendList.map(item => (
+                    item.socket ? <li className="friendList"onClick={() => switchChat(item.username)}>{item.username}</li> : undefined
+                ))}
             </ul>
+          </div>
+          <div className="offline">
+            <h4 className="onlineHead">Offline</h4>
+                <ul>
+                {friendList.map(item => (
+                    !item.socket ? <li className="friendListOff">{item.username}</li> : undefined
+                ))}
+                </ul>
+          </div>
         </div>
     )
 }
