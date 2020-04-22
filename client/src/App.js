@@ -6,6 +6,7 @@ import Member from "./pages/member"
 import fakeAuth from './utils/authContext'
 import SetBudget from "./pages/setBudget"
 import SetBills from "./pages/setBills"
+import ChatApp from './components/ChatApp/ChatApp.js';
 
 
 
@@ -53,12 +54,15 @@ function PrivateRoute({ children, ...rest }) {
           </Route>
           <PrivateRoute  path="/member">
             <Member />
+            <ChatApp />
           </PrivateRoute>
           <PrivateRoute  path="/setBudget">
             <SetBudget />
+            <ChatApp />
           </PrivateRoute>
           <PrivateRoute  path="/setBills">
             <SetBills />
+            <ChatApp />
           </PrivateRoute>
           </Switch>
           

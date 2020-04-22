@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { withGlobalState } from 'react-globally'
 import openSocket from 'socket.io-client';
 const socket = openSocket('http://localhost:7001');
 
@@ -10,7 +11,7 @@ function Friends(props) {
             // socket.emit('request-friends-list') //its probably always emitting the event 
         setInterval(function() {
             socket.emit('request-friends-list')
-        }, 10000)
+        }, 13000)
     }, [])
 
     socket.on('send-friends-list', function(data) {
@@ -18,6 +19,7 @@ function Friends(props) {
     })
 
     function switchChat(remoteUser) {
+        // console.log(props.localUser)
         socket.emit('switch-chat', {localUser: props.localUser, remoteUser: remoteUser} )
     }
 
@@ -36,4 +38,4 @@ function Friends(props) {
     )
 }
 
-export default Friends
+export default withGlobalState(Friends)

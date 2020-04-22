@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import openSocket from 'socket.io-client';
 
 
 class Tab extends Component {

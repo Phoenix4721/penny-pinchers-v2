@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import API from '../../utils/API'
 import { useHistory } from "react-router-dom";
 import fakeAuth from '../../utils/authContext'
 import { withGlobalState } from 'react-globally'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Button, Form, FormGroup, Label, Input, FormText, Progress, Alert } from 'reactstrap';
+import Cookies from 'js-cookie'
+import { Form, FormGroup, Input, Alert } from 'reactstrap';
 import logo from "../logo2.png"
 import "./home.css"
 
@@ -13,9 +14,11 @@ function Home(props) {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
+    let un = Cookies.get('userUn')
+    let pw = Cookies.get('userPw')
     let history = useHistory();
+    let url = Cookies.get('url')
 
-    
     function handleSubmit(e) {
         e.preventDefault();
 
@@ -28,10 +31,14 @@ function Home(props) {
             props.setGlobalState({
                 user: res.data
             })
-                 
+ 
             } else {
                 return
             }
+        })
+        .then(() => {
+            Cookies.set('userUn', username, { path: '' })
+            Cookies.set('userPw', password, { path: '' })   
         })
         .then(() => {
             fakeAuth.authenticate(() => {
@@ -48,6 +55,41 @@ function Home(props) {
             }
         })
     };
+
+    useEffect(() => {
+        
+          if (un && pw) {
+            API.login({
+                username: un,
+                password: pw
+            })
+            .then(res => {
+                if (res) {
+                props.setGlobalState({
+                    user: res.data
+                })
+     
+                } else {
+                    return
+                }
+            })
+            .then(() => {
+                fakeAuth.authenticate(() => {
+                    history.replace(url);
+  
+                  });
+            })
+            .catch(err => {
+                if (err) {
+                    throw err
+                }
+            })
+        } else {
+            return
+        }
+      
+  
+    }, [])
 
     const [alertText, setAlert] = useState({
         text: '',

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './Tabs.css'
-import openSocket from 'socket.io-client';
+// import openSocket from 'socket.io-client';
 
 
 import Tab from '../Tab/Tab.js';

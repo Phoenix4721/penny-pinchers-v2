@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Cookies from 'js-cookie'
 import fakeAuth from '../../utils/authContext'
 import LogOut from '../../components/logOutBut'
 import API from '../../utils/API'
@@ -6,11 +7,11 @@ import { useHistory } from "react-router-dom";
 import { withGlobalState } from 'react-globally'
 import "./member.css"
 import logo from "./white-logo.png"
-import openSocket from 'socket.io-client';
-const socket = openSocket('http://localhost:7001');
+// import openSocket from 'socket.io-client';
+// const socket = openSocket('http://localhost:7001');
 
 function Member(props) {
-
+  Cookies.set('url', '/member', { path: '' })
     const [user, setUser] = useState('')
     
     let history = useHistory();
@@ -21,7 +22,7 @@ function Member(props) {
         })
         .then(res => {
             setUser(res.data[0].username)
-            socket.emit('log-user-info', {socket: socket.id, username: res.data[0].username})
+            // socket.emit('log-user-info')
         })
     }, [])
 

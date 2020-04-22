@@ -3,32 +3,39 @@ import openSocket from 'socket.io-client';
 import './ChatApp.css';
 import Tabs from '../Tabs/Tabs.js'
 import Friends from '../Friends/Friends.js'
-
+import { withGlobalState } from 'react-globally'
 const socket = openSocket('http://localhost:7001');
+
 function ChatApp(props) {
 
-    const [ localUser, setLocalUser ] = useState('')
-    const [ remoteUser, setRemoteUser ] = useState('')
+    const [ localUser, setLocalUser ] = useState(socket.id)
+    const [ remoteUser, setRemoteUser ] = useState('') // should be an object that includes the username for display
     const [ message, setMessage ] = useState('')
     const [ messages, setMessages ] = useState([])
 
-    socket.on('assign-socket', function(id) {
-        console.log(id)
-        setLocalUser(id)
-    })
+    // useEffect(() => {
+    //     socket.on('assign-socket', function(id) {
+    //         console.log('assign socket ' + id)
+    //         setLocalUser(id)
+    //     })
+    // }, [])
+    
 
-    socket.on('assign-remote', function(id) {
-        setRemoteUser(id)
-        console.log('remote set')
-    })
+    // socket.on('assign-remote', function(id) {
+    //     setRemoteUser(id)
+    //     console.log('remote set ' + id)
+    // })
 
     useEffect(() => {
         socket.on('update-chat', function(value) {
-            console.log('data', value)
-            //set remote user
+            setRemoteUser(value[0].socket)
         })
     }, [])
     
+    useEffect(() => {
+        socket.emit('log-user-info', {username: props.globalState.user.username, socket: socket.id })
+        console.log('logging user ' + socket.id)
+    }, [])
 
     useEffect(() => {
         socket.on('send-chat-to-client', function(data) {
@@ -37,7 +44,7 @@ function ChatApp(props) {
     }, [])
 
     function sendChat() {
-        socket.emit('send-chat-to-server', { message: message, remoteUser: remoteUser, localUser: localUser })
+        socket.emit('send-chat-to-server', { message: message, remoteUser: remoteUser, localUser: localUser }) // add remote.username local.username for display 
         setMessage('')
     }
 
@@ -64,7 +71,7 @@ function ChatApp(props) {
                 <Friends localUser={localUser}/>
             </div>
             <div label="Chat">
-                <h3>Chat between {localUser} and {remoteUser}</h3>
+                <h3>Chat between {localUser} and {remoteUser}</h3> {/* change this to 'send message to remote.username' */}
                 <ul>
                     {messages.map(item => <li>{item}</li>)}
                 </ul>
@@ -78,4 +85,5 @@ function ChatApp(props) {
     
 }
 
-export default ChatApp;
+export default withGlobalState(ChatApp)
+
