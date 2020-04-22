@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import fakeAuth from '../../utils/authContext'
-import LogOut from '../../components/logOutBut'
 import Cookies from 'js-cookie'
 import { useHistory } from "react-router-dom";
 import { withGlobalState } from 'react-globally'
@@ -11,7 +9,7 @@ import './setbill.css'
 import NavBar from '../../components/NavBar'
 import Sidenav from '../../components/SideNav'
 
-function SetBills (props) {
+function SetBills () {
   let history = useHistory();
   const [billState, setBill] = useState({
     groceries: 0,
@@ -20,12 +18,6 @@ function SetBills (props) {
     shopping: 0
   })
   Cookies.set('url', '/setBills', { path: '' })
-  let login = (site) => {
-    fakeAuth.authenticate(() => {
-      history.replace(site);
-      
-    });
-  };
 
   function handleChange (event) {
       setBill({ ...billState,  ...{ [event.target.name]: Number(event.target.value) } })

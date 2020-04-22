@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import fakeAuth from '../../utils/authContext'
-import LogOut from '../../components/logOutBut'
 import Cookies from 'js-cookie'
-import { useHistory } from "react-router-dom";
 import { InputGroup, InputGroupAddon, Col, Row, Button, Form, Label, Input } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import API from '../../utils/API';
@@ -11,14 +8,15 @@ import Sidenav from '../../components/SideNav'
 
 
 // Dustin Was Here
-function SetBudget (props) {
-    let history = useHistory();
+function SetBudget () {
+
     const [groceryState, setGrocery] = useState({
       groceriesBudget: 0,
       transportationBudget: 0,
       diningBudget: 0,
       shoppingBudget: 0
     })
+    
     Cookies.set('url', '/setBudget', { path: '' })
 
    function handleChange (event) {
