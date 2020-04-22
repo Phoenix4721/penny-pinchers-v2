@@ -6,7 +6,8 @@ import { useHistory } from "react-router-dom";
 import { InputGroup, InputGroupAddon, Col, Row, Button, Form, Label, Input } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import API from '../../utils/API';
-
+import NavBar from '../../components/NavBar'
+import Sidenav from '../../components/SideNav'
 
 
 // Dustin Was Here
@@ -19,12 +20,6 @@ function SetBudget (props) {
       shoppingBudget: 0
     })
     Cookies.set('url', '/setBudget', { path: '' })
-    let login = (site) => {
-      fakeAuth.authenticate(() => {
-        history.replace(site);
-        
-      });
-    };
 
    function handleChange (event) {
       setGrocery({ ...groceryState,  ...{ [event.target.name]: Number(event.target.value) } })
@@ -48,6 +43,10 @@ function SetBudget (props) {
   } 
 
     return (
+      <body className="main-body">
+    <NavBar />
+
+    <Sidenav/>
       <Form>
       <div>
           <h1 className="text-center">Please enter your budgets<span className="name"></span></h1>   
@@ -96,9 +95,10 @@ function SetBudget (props) {
     <Button color="secondary" size="sm" onClick={handleSubmit} method="user" className="right">Submit Budgets</Button>
       </Col>
     </Row>
-    <Button className="setbills-btn" onClick={() => {login('/setBills')}}>Set Your Bills</Button>
-    <LogOut />
+    
+
   </Form>
+  </body>
     )   
 
     }

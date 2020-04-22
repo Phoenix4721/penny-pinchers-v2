@@ -9,16 +9,19 @@ function AuthButton() {
   return fakeAuth.isAuthenticated ? (
     <p>
       {/* Welcome!{" "} */}
-      <button className="logout-btn"
+      <a className="bg-dark list-group-item list-group-item-action logout-btn"
         onClick={() => {
           fakeAuth.signout(() => history.push("/"));
         }}
       >
-        Sign out
-      </button>
+      <div class="d-flex w-100 justify-content-start align-items-center">
+          <span class="fa fa-sign-out fa-fw mr-3"></span>
+          <span class="menu-collapsed">Log out</span>
+      </div>
+      </a>
     </p>
   ) : (
-    <p>You are not logged in.</p>
+    undefined
   );
 }
 

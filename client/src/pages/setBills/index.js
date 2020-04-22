@@ -8,6 +8,8 @@ import { InputGroup, InputGroupAddon, Col, Row, Button, Form, Label, Input } fro
 import 'bootstrap/dist/css/bootstrap.min.css';
 import API from '../../utils/API';
 import './setbill.css'
+import NavBar from '../../components/NavBar'
+import Sidenav from '../../components/SideNav'
 
 function SetBills (props) {
   let history = useHistory();
@@ -48,6 +50,10 @@ function SetBills (props) {
 } 
 
 return (
+  <body className="main-body">
+    <NavBar />
+
+    <Sidenav/>
   <Form>
   <div>
       <h1 className="text-center">Please enter your bills<span className="name"></span></h1>   
@@ -96,9 +102,10 @@ return (
 <Button color="secondary" size="sm" onClick={handleSubmit} method="user" className="right">Add Bills</Button>
   </Col>
 </Row>
-<Button className="setbills-btn" onClick={() => {login('/setBudget')}}>Set Your Budgets</Button>
-<LogOut />
+
+
 </Form>
+</body>
 )   
 
 }

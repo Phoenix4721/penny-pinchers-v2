@@ -52,6 +52,7 @@ function PrivateRoute({ children, ...rest }) {
           <Route  path="/signup">
             <Signup />
           </Route>
+       
           <PrivateRoute  path="/member">
             <Member />
             <ChatApp />
@@ -64,6 +65,7 @@ function PrivateRoute({ children, ...rest }) {
             <SetBills />
             <ChatApp />
           </PrivateRoute>
+          
           </Switch>
           
         </div>

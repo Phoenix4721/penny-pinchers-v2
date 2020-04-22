@@ -7,6 +7,9 @@ import { useHistory } from "react-router-dom";
 import { withGlobalState } from 'react-globally'
 import "./member.css"
 import logo from "./white-logo.png"
+import NavBar from '../../components/NavBar'
+import Sidenav from '../../components/SideNav'
+
 // import openSocket from 'socket.io-client';
 // const socket = openSocket('http://localhost:7001');
 
@@ -34,11 +37,13 @@ function Member(props) {
 
     return (
         <body className="main-body">
+
+          <NavBar />
+
+          <Sidenav/>
         <div className="member-div">
             <p className="main-div">Welcome! {user}<span className="name"></span></p>
-            <button className="setbills-btn" onClick={() => {login('/setBudget')}}>Set Your Budgets</button>
-            <button className="setbills-btn" onClick={() => {login('/setBills')}}>Set Your Bills</button>
-            <LogOut />
+
         </div>
         <img className="logo" src={logo}></img>
       </body>

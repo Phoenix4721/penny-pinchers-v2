@@ -45,7 +45,7 @@ io.on('connection', client => {
   })
 
   client.on('request-friends-list', function() {
-    console.log('friends requested')
+    //console.log('friends requested')
     const friends = Promise.resolve(chatDB.listFriends())
       friends.then(value => client.emit('send-friends-list', value))
   })
