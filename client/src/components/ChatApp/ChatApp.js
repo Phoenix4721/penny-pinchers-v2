@@ -18,11 +18,6 @@ function ChatApp(props) {
     useEffect(() => {
         socket.emit('log-user-info', {username: props.globalState.user.username, socket: socket.id })
         console.log('logging user ' + socket.id)
-
-        // props.setGlobalState({ user: {
-        //     sock: socket.id
-        //     }
-        //  })
     }, [])
 
     useEffect(() => {
