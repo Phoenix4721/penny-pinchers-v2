@@ -29,7 +29,7 @@
     padding: 10px 0px;
     width: 250px;
     margin-left: -28px;
-    cursor: pointer;
+    cursor: default;
     transition: .3s ease-in-out;
 }
 

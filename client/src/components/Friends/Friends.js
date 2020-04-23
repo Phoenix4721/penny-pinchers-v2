@@ -5,7 +5,8 @@ import ChatApp from '../ChatApp/ChatApp'
 const socket = openSocket('http://localhost:7001');
 
 function Friends(props) {
-
+    const [ localUser, setLocalUser ] = useState(socket.id)
+    const [sockUser, setSockUser] = useState('')
     const [ friendList, setFriendList ] = useState([])
     const [show, setShow] = useState(false)
     const [user, setUser] = useState('')
@@ -17,13 +18,21 @@ function Friends(props) {
         }, 100)
     }, [])
 
+    useEffect(() => {
+        socket.emit('log-user-info', {username: props.globalState.user.username, socket: socket.id })
+        console.log('logging user ' + socket.id)
+    }, [])
+
+
+
     socket.on('send-friends-list', function(data) {
         setFriendList(data)
     })
 
-    function switchChat(remoteUser) {
+    function switchChat(remoteUser, sock) {
         setUser(remoteUser)
-        socket.emit('switch-chat', {localUser: props.localUser, remoteUser: remoteUser} )
+        setSockUser(sock)
+        socket.emit('switch-chat', {localUser: localUser, remoteUser: remoteUser} )
         setShow(true)
     }
 
@@ -39,7 +48,7 @@ function Friends(props) {
             <h4 className="onlineHead">Online</h4>
             <ul>
                 {friendList.map(item => (
-                    item.socket ? <li key={item.userId} className="friendList"onClick={() => switchChat(item.username)}>{item.username}</li> : undefined
+                    item.socket ? <li key={item.userId} className="friendList"onClick={() => switchChat(item.username, item.socket)}>{item.username}</li> : undefined
                 ))}
             </ul>
           </div>
@@ -52,7 +61,7 @@ function Friends(props) {
                 </ul>
           </div>
         </div> : undefined}
-        {show ? <ChatApp name={user} icon={<i class="fa fa-arrow-left back" aria-hidden="true" onClick={switchShow}></i>} /> : undefined}
+        {show ? <ChatApp sock={sockUser} name={user} icon={<i class="fa fa-arrow-left back" aria-hidden="true" onClick={switchShow}></i>} /> : undefined}
      </div>
     )
 }

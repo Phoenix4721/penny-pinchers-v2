@@ -7,24 +7,18 @@ import { withGlobalState } from 'react-globally'
 const socket = openSocket('http://localhost:7001');
 
 function ChatApp(props) {
-   
+    
     const [ localUser, setLocalUser ] = useState(socket.id)
+    // console.log(localUser)
+    // console.log(props.sock)
     const [ remoteUser, setRemoteUser ] = useState('') // should be an object that includes the username for display
     const [ message, setMessage ] = useState('')
     const [ messages, setMessages ] = useState([])
 
-    // useEffect(() => {
-    //     socket.on('assign-socket', function(id) {
-    //         console.log('assign socket ' + id)
-    //         setLocalUser(id)
-    //     })
-    // }, [])
-    
-
-    // socket.on('assign-remote', function(id) {
-    //     setRemoteUser(id)
-    //     console.log('remote set ' + id)
-    // })
+    useEffect(() => {
+        socket.emit('log-user-info', {username: props.globalState.user.username, socket: socket.id })
+        console.log('logging user ' + socket.id)
+    }, [])
 
     useEffect(() => {
         socket.on('update-chat', function(value) {
@@ -32,10 +26,7 @@ function ChatApp(props) {
         })
     }, [])
     
-    useEffect(() => {
-        socket.emit('log-user-info', {username: props.globalState.user.username, socket: socket.id })
-        console.log('logging user ' + socket.id)
-    }, [])
+
 
     useEffect(() => {
         socket.on('send-chat-to-client', function(data) {
@@ -44,7 +35,7 @@ function ChatApp(props) {
     }, [])
 
     function sendChat() {
-        socket.emit('send-chat-to-server', { message: message, remoteUser: remoteUser, localUser: localUser }) // add remote.username local.username for display 
+        socket.emit('send-chat-to-server', { message: message, remoteUser: props.sock, localUser: localUser }) // add remote.username local.username for display 
         setMessage('')
     }
 
@@ -52,35 +43,8 @@ function ChatApp(props) {
         setMessage(event.target.value)
     }
 
-    // return (
-    //     <div className="chat-main">
-    //         {/* <FriendList /> */}
-    //         <h3>Chat between {localUser} and {remoteUser}</h3>
-    //         <ul>
-    //             {messages.map(item => <li>{item}</li>)}
-    //         </ul>
-    //         <input value={message} name='message' placeholder='Chat' onChange={handleChange}/>
-    //         <button onClick={() => sendChat()}>Send</button>
-    //     </div>
-    // );
-
     return (
-        // <div className='chat-main'>
-        //     <Tabs>
-        //     <div label="Friends" className="one">
-        //         <Friends localUser={localUser}/>
-        //     </div>
-        //     <div label="Chat">
-        //         <div className="messages">
-        //             <ul>
-        //                 {messages.map(item => <li>{item}</li>)}
-        //             </ul>
-        //         </div>
-        //         <input className="msg" value={message} name='message' placeholder='Chat' onChange={handleChange}/>
-        //         <button className="sendMsg" onClick={() => sendChat()}>Send</button>
-        //     </div>
-        //     </Tabs>
-        // </div>
+
         <div className='chat-main'>
             
        
@@ -104,4 +68,3 @@ function ChatApp(props) {
 }
 
 export default withGlobalState(ChatApp)
-
