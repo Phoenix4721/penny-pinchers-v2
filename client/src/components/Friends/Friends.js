@@ -6,25 +6,17 @@ const socket = openSocket('http://localhost:7001');
 
 function Friends(props) {
     const [ localUser, setLocalUser ] = useState(socket.id)
-    //console.log(localUser)
     const [sockUser, setSockUser] = useState('')
     const [ friendList, setFriendList ] = useState([])
     const [show, setShow] = useState(false)
     const [user, setUser] = useState('')
 
     useEffect(() => {
-            // socket.emit('request-friends-list') //its probably always emitting the event 
+          
         setInterval(function() {
             socket.emit('request-friends-list')
         }, 1000)
     }, [])
-
-    useEffect(() => {
-        socket.emit('log-user-info', {username: props.globalState.user.username, socket: 'temp value' })
-        console.log('logging user ')
-    }, [])
-
-
 
     socket.on('send-friends-list', function(data) {
         setFriendList(data)
@@ -42,9 +34,9 @@ function Friends(props) {
     }
 
     return (
-    <div>
-        {!show ? 
-        <div className="onOff">
+    <div className="chatApp">
+        
+        <div className="onOff" style={show ?{visibility:"hidden"}:{visibility:"visible"}}>
           <div className="online">
             <h4 className="onlineHead">Online</h4>
             <ul>
@@ -61,8 +53,10 @@ function Friends(props) {
                 ))}
                 </ul>
           </div>
-        </div> : undefined}
-        {show ? <ChatApp sock={sockUser} localUser={localUser} name={user} icon={<i class="fa fa-arrow-left back" aria-hidden="true" onClick={switchShow}></i>} /> : undefined}
+        </div> 
+
+            <ChatApp sock={sockUser} localUser={localUser} name={user} icon={<i class="fa fa-arrow-left back" aria-hidden="true" onClick={switchShow}></i>} style={show ? {visibility:"visible"}:{visibility:"hidden"}}/>
+       
      </div>
     )
 }

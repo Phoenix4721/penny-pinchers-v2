@@ -7,15 +7,14 @@ import { withGlobalState } from 'react-globally'
 const socket = openSocket('http://localhost:7001');
 
 function ChatApp(props) {
-    //console.log(props.sock)
-const [ localUser, setLocalUser ] = useState(socket.id)
-   // console.log(localUser)
-    // console.log(localUser)
-    // console.log(props.sock)
+
+    const [ localUser, setLocalUser ] = useState(socket.id)
     const [ remoteUser, setRemoteUser ] = useState('') // should be an object that includes the username for display
     const [ message, setMessage ] = useState('')
     const [ messages, setMessages ] = useState([])
+    
 
+  
     useEffect(() => {
         socket.emit('log-user-info', {username: props.globalState.user.username, socket: socket.id })
         console.log('logging user ' + socket.id)
@@ -53,7 +52,7 @@ const [ localUser, setLocalUser ] = useState(socket.id)
 
     return (
 
-        <div className='chat-main'>
+        <div className='chat-main'  style={props.style}>
             
        
             <div label="Chat">
