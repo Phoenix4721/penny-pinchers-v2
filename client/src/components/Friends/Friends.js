@@ -16,12 +16,12 @@ function Friends(props) {
             // socket.emit('request-friends-list') //its probably always emitting the event 
         setInterval(function() {
             socket.emit('request-friends-list')
-        }, 100)
+        }, 1000)
     }, [])
 
     useEffect(() => {
-        socket.emit('log-user-info', {username: props.globalState.user.username, socket: socket.id })
-        console.log('logging user ' + socket.id)
+        socket.emit('log-user-info', {username: props.globalState.user.username, socket: 'temp value' })
+        console.log('logging user ')
     }, [])
 
 

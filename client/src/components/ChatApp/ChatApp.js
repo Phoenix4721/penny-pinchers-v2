@@ -16,10 +16,15 @@ const [ localUser, setLocalUser ] = useState(socket.id)
     const [ message, setMessage ] = useState('')
     const [ messages, setMessages ] = useState([])
 
-    // useEffect(() => {
-    //     socket.emit('log-user-info', {username: props.globalState.user.username, socket: socket.id })
-    //     console.log('logging user ' + socket.id)
-    // }, [])
+    useEffect(() => {
+        socket.emit('log-user-info', {username: props.globalState.user.username, socket: socket.id })
+        console.log('logging user ' + socket.id)
+
+        // props.setGlobalState({ user: {
+        //     sock: socket.id
+        //     }
+        //  })
+    }, [])
 
     useEffect(() => {
         socket.on('update-chat', function(value) {
@@ -37,6 +42,7 @@ const [ localUser, setLocalUser ] = useState(socket.id)
     }, [])
 
     function sendChat() {
+        console.log('remote = ' + props.sock)
         socket.emit('send-chat-to-server', { message: message, remoteUser: props.sock, localUser: localUser }) // add remote.username local.username for display 
         setMessage('')
     }
