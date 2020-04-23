@@ -6,6 +6,7 @@ const socket = openSocket('http://localhost:7001');
 
 function Friends(props) {
     const [ localUser, setLocalUser ] = useState(socket.id)
+    //console.log(localUser)
     const [sockUser, setSockUser] = useState('')
     const [ friendList, setFriendList ] = useState([])
     const [show, setShow] = useState(false)
@@ -61,7 +62,7 @@ function Friends(props) {
                 </ul>
           </div>
         </div> : undefined}
-        {show ? <ChatApp sock={sockUser} name={user} icon={<i class="fa fa-arrow-left back" aria-hidden="true" onClick={switchShow}></i>} /> : undefined}
+        {show ? <ChatApp sock={sockUser} localUser={localUser} name={user} icon={<i class="fa fa-arrow-left back" aria-hidden="true" onClick={switchShow}></i>} /> : undefined}
      </div>
     )
 }
