@@ -44,7 +44,7 @@ function SetBudget () {
       <body className="main-body">
     <NavBar />
 
-    <Sidenav/>
+     
       <Form>
       <div>
           <h1 className="text-center">Please enter your budgets<span className="name"></span></h1>   

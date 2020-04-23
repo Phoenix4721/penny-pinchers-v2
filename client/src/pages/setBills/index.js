@@ -45,7 +45,7 @@ return (
   <body className="main-body">
     <NavBar />
 
-    <Sidenav/>
+    
   <Form>
   <div>
       <h1 className="text-center">Please enter your bills<span className="name"></span></h1>   
