@@ -6,6 +6,7 @@ import "./side.css";
 import fakeAuth from '../../utils/authContext'
 import { useHistory } from "react-router-dom";
 import ChatApp from '../ChatApp/ChatApp'
+import Friends from '../Friends/Friends'
 
 function SideNav(props) {
 
@@ -78,7 +79,7 @@ function SideNav(props) {
             <Logout />
 
         </ul>
-        <ChatApp />
+        <Friends />
     </div>
 
 </div>

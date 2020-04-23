@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import openSocket from 'socket.io-client';
 import './ChatApp.css';
 import Tabs from '../Tabs/Tabs.js'
-import Friends from '../Friends/Friends.js'
+
 import { withGlobalState } from 'react-globally'
 const socket = openSocket('http://localhost:7001');
 
 function ChatApp(props) {
-
+   
     const [ localUser, setLocalUser ] = useState(socket.id)
     const [ remoteUser, setRemoteUser ] = useState('') // should be an object that includes the username for display
     const [ message, setMessage ] = useState('')
@@ -65,20 +65,38 @@ function ChatApp(props) {
     // );
 
     return (
+        // <div className='chat-main'>
+        //     <Tabs>
+        //     <div label="Friends" className="one">
+        //         <Friends localUser={localUser}/>
+        //     </div>
+        //     <div label="Chat">
+        //         <div className="messages">
+        //             <ul>
+        //                 {messages.map(item => <li>{item}</li>)}
+        //             </ul>
+        //         </div>
+        //         <input className="msg" value={message} name='message' placeholder='Chat' onChange={handleChange}/>
+        //         <button className="sendMsg" onClick={() => sendChat()}>Send</button>
+        //     </div>
+        //     </Tabs>
+        // </div>
         <div className='chat-main'>
-            <Tabs>
-            <div label="Friends">
-                <Friends localUser={localUser}/>
-            </div>
+            
+       
             <div label="Chat">
-                <h3>Chat between {localUser} and {remoteUser}</h3> {/* change this to 'send message to remote.username' */}
-                <ul>
-                    {messages.map(item => <li>{item}</li>)}
-                </ul>
+            {props.icon}
+                <h3 className="chatUser">{props.name}</h3>
+               
+                <div className="messages">
+                    <ul className="message">
+                        {messages.map(item => <li>{item}</li>)}
+                    </ul>
+                </div>
                 <input className="msg" value={message} name='message' placeholder='Chat' onChange={handleChange}/>
                 <button className="sendMsg" onClick={() => sendChat()}>Send</button>
             </div>
-            </Tabs>
+            
         </div>
     )
 
