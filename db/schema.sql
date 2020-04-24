@@ -18,3 +18,15 @@ create table user (
     shoppingBudget INT DEFAULT 200,
     PRIMARY KEY (userId)
 );
+
+create table notes (
+    id INT NOT NULL AUTO_INCREMENT,
+    date  DATETIME NOT NULL
+        DEFAULT CURRENT_TIMESTAMP,
+    billType VARCHAR(30) NOT NULL, 
+    billAmount INT NOT NULL,
+    billDescription VARCHAR(100) NOT NULL,
+    PRIMARY KEY (id),
+    userId INT, 
+    FOREIGN KEY (userId) REFERENCES user(userId)
+)

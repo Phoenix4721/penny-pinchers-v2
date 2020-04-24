@@ -56,19 +56,17 @@ router.post('/api/user', (req, res) => {
 
 router.post('/setBudget',(req, res) => {
   set.set(
-    req.body.groceriesBudget,
-    req.body.transportationBudget,
-    req.body.diningBudget,
-    req.body.shoppingBudget
+    req.body.budget,
+    req.body.val,
+    req.body.user
  )
 });
 
 router.post('/setBills',(req, res) => {
   bill.set(
-    req.body.groceries,
-    req.body.transportation,
-    req.body.dining,
-    req.body.shopping
+    req.body.bill,
+    req.body.val,
+    req.body.user
  )
 });
 
