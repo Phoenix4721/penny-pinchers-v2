@@ -7,6 +7,7 @@ import fakeAuth from './utils/authContext'
 import SetBudget from "./pages/setBudget"
 import SetBills from "./pages/setBills"
 import ChatApp from './components/ChatApp/ChatApp.js';
+import Leaderboard from './pages/Leaderboard/Leaderboard.js';
 
 
 
@@ -52,7 +53,7 @@ function PrivateRoute({ children, ...rest }) {
           <Route  path="/signup">
             <Signup />
           </Route>
-       
+
           <PrivateRoute  path="/member">
             <Member />
             
@@ -65,7 +66,10 @@ function PrivateRoute({ children, ...rest }) {
             <SetBills />
             <ChatApp />
           </PrivateRoute>
-          
+          <PrivateRoute  path="/leaderboard">
+            <Leaderboard />
+            <ChatApp />
+          </PrivateRoute>
           </Switch>
           
         </div>

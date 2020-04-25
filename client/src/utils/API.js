@@ -55,4 +55,13 @@ export default {
       })
   },
 
+  recentBills: function(postdata) {
+    return axios({
+        method: 'post',
+        headers: { 'content-type': 'application/json' },
+        url: 'http://localhost:7001/recentBills',
+        data: postdata
+      })
+  }
+
 };

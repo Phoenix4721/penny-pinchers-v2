@@ -7,6 +7,7 @@ const db = require('../../models/user')
 const con = require('../../config/config')
 const set = require('../../models/setBudget')
 const bill = require('../../models/setBills')
+const recent = require('../../models/recentBills.js')
 //const isAuthenticated = require('../config/middleware/isAuthenticated')
 
 const { check, validationResult } = require('express-validator');
@@ -70,5 +71,19 @@ router.post('/setBills',(req, res) => {
  )
 });
 
+router.get('/recentBills', (req, res) => {
+  recent.recentBills(
+    req.body.userId
+  )
+})
+
+router.post('/recentBills', (req,res) => {
+  recent.addBills(
+    req.body.billType,
+    req.body.billAmount,
+    req.body.billDesc,
+    req.body.userId
+  )
+})
 
 module.exports = router
