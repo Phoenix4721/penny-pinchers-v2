@@ -6,7 +6,8 @@ import { useHistory } from "react-router-dom";
 import { InputGroup, InputGroupAddon, Col, Row, Button, Form, Label, Input } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import API from '../../utils/API';
-import SetBudgetDrop from '../../components/Dropdowns/budgetDrop/setBudgetDrop'
+import SetBudgetDrop from '../../components/Dropdowns/budgetDrop/setBudgetDrop';
+import NavBar from '../../components/NavBar'
 
 
 
@@ -49,10 +50,14 @@ function SetBudget (props) {
   } 
 
   return (
-    <Form>
-      <SetBudgetDrop/>
-  <LogOut />
-  </Form>
+    <body className="main-body">
+    <div>
+        <NavBar />
+      <Form>
+        <SetBudgetDrop/>
+      </Form>
+    </div>
+  </body>
   )   
 
     }

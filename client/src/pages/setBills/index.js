@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import API from '../../utils/API';
 import './setbill.css'
 import SetBillsDrop from '../../components/Dropdowns/setBillsDrop';
+import NavBar from '../../components/NavBar'
 
 
 
@@ -51,10 +52,14 @@ function SetBills (props) {
 } 
 
 return (
-  <Form>
-    <SetBillsDrop/>
-<LogOut />
-</Form>
+  <body className="main-body">
+    <div>
+        <NavBar />
+      <Form>
+        <SetBillsDrop/>
+      </Form>
+    </div>
+  </body>
 )   
 
 }

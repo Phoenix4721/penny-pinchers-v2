@@ -13,6 +13,7 @@ create table user (
     dining INT DEFAULT 0,
     shopping INT DEFAULT 0,
     allBills INT DEFAULT 0,
+    allBudgets INT DEFAULT 0,
     GroceriesBudget INT DEFAULT 200,
     TransportationBudget INT DEFAULT 200,
     DiningBudget INT DEFAULT 200,
