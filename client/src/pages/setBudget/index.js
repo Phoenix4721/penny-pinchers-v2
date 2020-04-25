@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import { InputGroup, InputGroupAddon, Col, Row, Button, Form, Label, Input } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import API from '../../utils/API';
-import SetBudgetDrop from '../../components/Dropdowns/setBudgetDrop';
+import SetBudgetDrop from '../../components/Dropdowns/budgetDrop/setBudgetDrop'
 
 
 

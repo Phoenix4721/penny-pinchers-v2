@@ -12,10 +12,11 @@ create table user (
     transportation INT DEFAULT 0,
     dining INT DEFAULT 0,
     shopping INT DEFAULT 0,
-    groceriesBudget INT DEFAULT 200,
-    transportationBudget INT DEFAULT 200,
-    diningBudget INT DEFAULT 200,
-    shoppingBudget INT DEFAULT 200,
+    allBills INT DEFAULT 0,
+    GroceriesBudget INT DEFAULT 200,
+    TransportationBudget INT DEFAULT 200,
+    DiningBudget INT DEFAULT 200,
+    ShoppingBudget INT DEFAULT 200,
     PRIMARY KEY (userId)
 );
 

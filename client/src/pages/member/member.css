@@ -32,6 +32,46 @@
     color: green;
 }
 
+.bills-div {
+    margin-bottom: 5vh;
+}
+
+.card {
+   border: none;
+   line-height: 0.7rem;
+}
+
+.bills-span {
+    text-align: left;
+}
+
+.recent-header {
+    border-bottom: 1px black solid;
+    display: inline-block;
+    font-size: x-large;
+    margin-left: 2.5vw;
+    margin-bottom: 1vh;
+}
+
+.title {
+    font-weight: 800;
+    font-size: large;
+    text-align: left;
+   
+    /* padding-bottom: 0vh; */
+}
+
+.text {
+    text-align: left;
+    padding-bottom: 3vh;
+    border-bottom: 1px solid gray;
+   
+}
+
+.body {
+    background-color: transparent;
+}
+
 .logo {
     width: 8vw; 
     height: 15vh;
