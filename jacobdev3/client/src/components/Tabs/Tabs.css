@@ -1,0 +1,26 @@
+.tab-list {
+    border-bottom: 1px solid #ccc;
+    padding-left: 0;
+  }
+  
+  .tab-list-item {
+    display: inline-block;
+    list-style: none;
+    margin-bottom: -1px;
+    padding: 0.5rem 0.75rem;
+    width:140px;
+    cursor: pointer;
+    transition: .3 ease-in-out;
+  }
+
+  .tab-list-item:hover {
+    transition: .3 ease-in-out;
+    background-color: rgba(255, 255, 255, 0.021);
+  }
+  
+  .tab-list-active {
+    background-color: rgba(255, 250, 250, 0.61);
+    border: solid #ccc;
+    border-width: 1px 1px 0 1px;
+  }
+  
