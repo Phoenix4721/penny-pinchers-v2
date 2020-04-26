@@ -11,6 +11,9 @@ function Leaderboard(props) {
     
     function calculatePoints(budget, expenses) {
         let fractionUnder = (budget - expenses)/budget;
+        if (Math.floor(fractionUnder * 100) == NaN || Math.floor(fractionUnder * 100) == Infinity) {
+            return 0
+        }
         return Math.floor(fractionUnder * 100);
      }
 
