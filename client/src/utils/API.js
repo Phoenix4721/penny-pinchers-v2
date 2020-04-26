@@ -62,6 +62,14 @@ export default {
         url: 'http://localhost:7001/recentBills',
         data: postdata
       })
+  },
+
+  getLeaders: function() {
+    return axios({
+      method: 'post',
+      headers: { 'content-type': 'application/json' },
+      url: `http://localhost:7001/getleaders`
+    })
   }
 
 };

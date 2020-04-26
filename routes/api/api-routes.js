@@ -5,6 +5,7 @@ const router = express.Router()
 const passport = require('../../config/passport')
 const db = require('../../models/user')
 const con = require('../../config/config')
+const leaders = require('../../config/leaderboard.js')
 const set = require('../../models/setBudget')
 const bill = require('../../models/setBills')
 const recent = require('../../models/recentBills.js')
@@ -84,6 +85,11 @@ router.post('/recentBills', (req,res) => {
     req.body.billDesc,
     req.body.userId
   )
+})
+
+router.post('/getleaders', (req, res) => {
+  leaders.getLeaders()
+    .then(result => res.json(result))
 })
 
 module.exports = router

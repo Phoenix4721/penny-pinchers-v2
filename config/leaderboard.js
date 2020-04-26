@@ -13,3 +13,5 @@ module.exports = {
         })
     }
 }
+
+// SELECT username, allBudgets, allBills FROM user
