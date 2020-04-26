@@ -14,6 +14,18 @@ function Leaderboard(props) {
         return Math.floor(fractionUnder * 100);
      }
 
+    // function sortArray() {
+    //     if (a.score < b.score) {
+    //         return -1
+    //     }  
+    //     if (a.score > b.score) {
+    //         return 1
+    //     }
+    //     if (a.score === b.score) {
+    //         return 0
+    //     }
+    // }
+
     useEffect(() => {
         API.getLeaders()
             .then(value => {
@@ -22,8 +34,11 @@ function Leaderboard(props) {
                 tempArray.push(item)
             })
             console.log(tempArray)
-            // setLeaderArray(tempArray.sort(( a, b ) => b.score - a.score))
-            console.log(tempArray.sort(( a, b ) => a.score - b.score))
+            // setLeaderArray(tempArray.reverse())
+            
+            setLeaderArray(tempArray.sort(( a, b ) => b.score - a.score))
+            // let tempArray2 = tempArray.reverse()
+            // console.log(tempArray2)
         })
     }, [])
     
