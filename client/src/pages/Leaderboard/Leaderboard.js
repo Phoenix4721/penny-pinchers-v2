@@ -33,7 +33,7 @@ function Leaderboard(props) {
                 item.score = calculatePoints(item.allBudgets, item.allBills)
                 tempArray.push(item)
             })
-            console.log(tempArray)
+            // console.log(tempArray)
             // setLeaderArray(tempArray.reverse())
             
             setLeaderArray(tempArray.sort(( a, b ) => b.score - a.score))

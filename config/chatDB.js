@@ -5,11 +5,11 @@ module.exports = {
         con.query('SELECT userId, username FROM user WHERE username = ?',[data.username], (err, results) => {
             if (err) {console.log(err)
             } else {
-                console.log(results[0].userId)
+                // console.log(results[0].userId)
                 con.query(`UPDATE user SET socket = ? WHERE userId = ?`,[data.socket, results[0].userId], (err, result) => {
                     if(err) {console.log(err)
                     } else {
-                        console.log(result)
+                        // console.log(result)
                     }
                 })
             }
@@ -24,7 +24,7 @@ module.exports = {
                     con.query('UPDATE user SET socket = null WHERE userId = ?', [results[0].userId], (err, result) => {
                         if (err) {console.log(err)
                         } else {
-                            console.log(result)
+                            // console.log(result)
                         }
                     })
                 }

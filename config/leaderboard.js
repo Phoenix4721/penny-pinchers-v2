@@ -6,7 +6,7 @@ module.exports = {
             con.query('SELECT username, allBudgets, allBills FROM user', (err, results) => {
                 if (err) {reject(err)
                 } else {
-                    console.log(results)
+                    // console.log(results)
                     fulfill(results)
                 }
             })

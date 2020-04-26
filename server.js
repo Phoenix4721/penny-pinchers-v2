@@ -33,14 +33,14 @@ app.use(user)
 
 io.on('connection', client => {
 
-  console.log('connected' + client.id)
+  // console.log('connected' + client.id)
 
   io.to(client.id).emit('assign-socket', client.id)
 
   // client.broadcast.emit('assign-remote', client.id)
 
   client.on('log-user-info', function(data) {
-    console.log(data)
+    // console.log(data)
     chatDB.addSocket(data)
   })
 
@@ -55,14 +55,14 @@ io.on('connection', client => {
   client.on('switch-chat', function(user) {
     const newUser = Promise.resolve(chatDB.findSocket(user.remoteUser))
       newUser.then(value => {
-        console.log('remote ' + value[0].socket)
-        console.log('local' + user.localUser)
+        // console.log('remote ' + value[0].socket)
+        // console.log('local' + user.localUser)
         io.to(user.localUser).emit('update-chat', value)
       })
   })
 
   client.on('send-chat-to-server', function(data) {
-      console.log(data)
+      // console.log(data)
       io.to(data.remoteUser).emit('send-chat-to-client', data.message) // add display names 
       io.to(data.localUser).emit('send-chat-to-client', data.message)
       // io.emit('send-chat-to-client', data.message)
@@ -74,7 +74,7 @@ io.on('connection', client => {
       }
       chatDB.delSocket(client.id)
       // save chat to database 
-      console.log('user disconected' + client.id)
+      // console.log('user disconected' + client.id)
       //search database for client.id and delete
   })
 
