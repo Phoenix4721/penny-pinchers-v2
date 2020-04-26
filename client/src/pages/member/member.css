@@ -76,3 +76,8 @@
     width: 8vw; 
     height: 15vh;
 }
+
+.bills-div {
+    height: 400px;
+    overflow-y: scroll;
+}

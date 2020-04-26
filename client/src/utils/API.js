@@ -55,4 +55,13 @@ export default {
       })
   },
 
+  addBills: function(postdata) {
+  return axios({
+        method: 'post',
+        headers: { 'content-type': 'application/json' },
+        url: 'http://localhost:7001/addBills',
+        data: postdata
+      })
+  }
+
 };

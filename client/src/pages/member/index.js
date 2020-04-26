@@ -7,6 +7,8 @@ import logo from "./white-logo.png"
 import NavBar from '../../components/NavBar'
 import Sidenav from '../../components/SideNav'
 import { Row, Col, Card, CardTitle, CardText, Button } from 'reactstrap'
+import { MDBProgress } from 'mdbreact'
+
 
 
 // import openSocket from 'socket.io-client';
@@ -31,8 +33,19 @@ function Member(props) {
           <NavBar />
         <div className="member-div">
             <p className="main-div">Welcome, {user}!<span className="name"></span></p>
-
         </div>
+        <MDBProgress material value={25} height="20px" animated>
+          Groceries
+        </MDBProgress><br />
+        <MDBProgress material value={50} height="20px" animated>
+          Transportation
+        </MDBProgress> <br />
+        <MDBProgress material value={75} height="20px" animated>
+          Dining
+        </MDBProgress> <br />
+        <MDBProgress material value={100} height="20px" animated>
+          Shopping
+        </MDBProgress><br />
         <div className="bills-div">
           <div className="bills-span">
             <h1 className="recent-header">Your Recent Bills</h1>
@@ -50,6 +63,7 @@ function Member(props) {
            <Col sm="12">
              <Card body className="body">
                <CardTitle className="title">Name of Bill</CardTitle>
+               <CardTitle className="title">Bill Amount</CardTitle>
                <CardText className="text">Description</CardText>
                {/* <hr></hr> */}
              </Card>
@@ -73,10 +87,8 @@ function Member(props) {
             </Card>
           </Col>
           </Row>
-      
-        
-      </div>
-        <img className="logo" src={logo}></img>
+        </div>
+        {/* <img className="logo" src={logo}></img> */}
       </body>
     )   
 }

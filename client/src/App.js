@@ -57,6 +57,7 @@ function PrivateRoute({ children, ...rest }) {
             <Member />
             
           </PrivateRoute>
+          
           <PrivateRoute  path="/setBudget">
             <SetBudget />
             <ChatApp />
