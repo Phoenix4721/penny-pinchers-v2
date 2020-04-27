@@ -9,6 +9,7 @@ const setBillsDrop = (props) => {
   const [val, setVal] = useState('') //holds the value for the dropdown menu 
   const [show, setShow] = useState(false)
   const [bill, setBill] = useState('')
+  const [billDesc, setBillDesc] = useState('')
   let lowerProp = val.toLowerCase()
 
   const toggle = () => setOpen(!dropdownOpen);
@@ -22,13 +23,29 @@ const setBillsDrop = (props) => {
     console.log(bill)
     API.bills({
       val: lowerProp, bill: bill, user: props.globalState.user.userId
-  })
+    })
     setBill('')
+    onClick2()
+  }
+
+  function onClick2() {
+        API.addBills({
+      billType: val,
+      billAmount: bill,
+      billDesc: billDesc,
+      date: new Date(Date.now()).toLocaleString().split(',')[0],
+      userId: props.globalState.user.userId
+    })
   }
 
   function onChange(event) {
     setBill (Number(event.target.value))
   }
+
+  function onChangeDesc(event) {
+    setBillDesc (event.target.value)
+  }
+
 
   return (
       <Form>
@@ -44,17 +61,25 @@ const setBillsDrop = (props) => {
         <DropdownItem onClick={() => clicked('Shopping')}>Shopping</DropdownItem>
       </DropdownMenu>
     </ButtonDropdown>
+    {show ?  
+    <div>
     <Row form className="justify-content-md-center">
             <Col md={6}>
-              <Label for="exampleNumber">{val} Bills</Label>
+              <Label for="exampleNumber"></Label>
                 <InputGroup>
                   <InputGroupAddon addonType="prepend">$</InputGroupAddon>
                     <Input name={lowerProp} placeholder="Enter the amount" min={0} max={1000} type="number" step="1" value={bill} onChange={(event) => onChange(event)} />
                   <InputGroupAddon addonType="append">.00</InputGroupAddon>
                 </InputGroup>
+                <div>
+                    <textarea style={{width:'300px', height:'60px'}} onChange={(event) => onChangeDesc(event)}></textarea>
+                </div>
                 <Button color="secondary" size="sm" onClick={() => onClick()} method="user" className="right">Add Bill</Button>
             </Col>
           </Row>
+          
+          </div>
+    : undefined}
     </Form>
   );
 }

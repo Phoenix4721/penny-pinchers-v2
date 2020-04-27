@@ -13,7 +13,7 @@ create table user (
     dining INT DEFAULT 0,
     shopping INT DEFAULT 0,
     allBills INT DEFAULT 0,
-    allBudgets INT DEFAULT 0,
+    allBudgets INT DEFAULT 800,
     GroceriesBudget INT DEFAULT 200,
     TransportationBudget INT DEFAULT 200,
     DiningBudget INT DEFAULT 200,
@@ -23,8 +23,9 @@ create table user (
 
 create table notes (
     id INT NOT NULL AUTO_INCREMENT,
-    date  DATETIME NOT NULL
+    fulldate  DATETIME NOT NULL
         DEFAULT CURRENT_TIMESTAMP,
+	date VARCHAR(30) NOT NULL,
     billType VARCHAR(30) NOT NULL, 
     billAmount INT NOT NULL,
     billDescription VARCHAR(100) NOT NULL,

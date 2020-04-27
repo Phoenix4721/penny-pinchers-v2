@@ -10,6 +10,7 @@ import API from '../../utils/API';
 import './setbill.css'
 import SetBillsDrop from '../../components/Dropdowns/setBillsDrop';
 import NavBar from '../../components/NavBar'
+import logo from "../member/white-logo.png"
 
 
 
@@ -58,6 +59,7 @@ return (
       <Form>
         <SetBillsDrop/>
       </Form>
+      <img className="logo" src={logo}></img> 
     </div>
   </body>
 )   

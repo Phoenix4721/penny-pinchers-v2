@@ -72,18 +72,22 @@ router.post('/setBills',(req, res) => {
  )
 });
 
-router.get('/recentBills', (req, res) => {
+router.post('/recentBills', (req, res) => {
   recent.recentBills(
     req.body.userId
   )
+  .then(result => {
+    res.json(result)
+  })
 })
 
-router.post('/recentBills', (req,res) => {
+router.post('/addBills', (req,res) => {
   recent.addBills(
     req.body.billType,
     req.body.billAmount,
     req.body.billDesc,
-    req.body.userId
+    req.body.userId,
+    req.body.date
   )
 })
 

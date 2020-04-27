@@ -60,15 +60,15 @@ function PrivateRoute({ children, ...rest }) {
           </PrivateRoute>
           <PrivateRoute  path="/setBudget">
             <SetBudget />
-            <ChatApp />
+            
           </PrivateRoute>
           <PrivateRoute  path="/setBills">
             <SetBills />
-            <ChatApp />
+        
           </PrivateRoute>
           <PrivateRoute  path="/leaderboard">
             <Leaderboard />
-            <ChatApp />
+           
           </PrivateRoute>
           </Switch>
           
