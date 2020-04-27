@@ -8,6 +8,7 @@ import SetBudget from "./pages/setBudget"
 import SetBills from "./pages/setBills"
 import ChatApp from './components/ChatApp/ChatApp.js';
 import Leaderboard from './pages/Leaderboard/Leaderboard.js';
+import Progress from './pages/Progress/index.js';
 
 
 
@@ -68,6 +69,10 @@ function PrivateRoute({ children, ...rest }) {
           </PrivateRoute>
           <PrivateRoute  path="/leaderboard">
             <Leaderboard />
+
+          </PrivateRoute>
+          <PrivateRoute  path="/progress">
+            <Progress />
            
           </PrivateRoute>
           </Switch>

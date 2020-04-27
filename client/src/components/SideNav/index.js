@@ -61,7 +61,7 @@ function SideNav(props) {
             <a onClick={() => {login('/leaderboard')}} className=" list-group-item list-group-item-action">
                 <div className="d-flex w-100 justify-content-start align-items-center">
                     <span className="fa fa-tasks fa-fw mr-3"></span>
-                    <span className="menu-collapsed">Team</span>
+                    <span className="menu-collapsed">leaderboard</span>
                 </div>
             </a>
 
@@ -69,7 +69,7 @@ function SideNav(props) {
                 <small>OPTIONS</small>
             </li>
   
-            <a onClick={() => {login('/progress')}}className=" list-group-item list-group-item-action">
+            <a onClick={() => {login('/progress')}} className="hii  list-group-item list-group-item-action flex-column align-items-start">
                 <div className="d-flex w-100 justify-content-start align-items-center">
                     <span className="fa fa-dashboard fa-fw mr-3"></span>
                     <span className="menu-collapsed">Progress</span>

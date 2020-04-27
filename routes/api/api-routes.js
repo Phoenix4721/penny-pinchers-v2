@@ -96,4 +96,13 @@ router.post('/getleaders', (req, res) => {
     .then(result => res.json(result))
 })
 
+router.post('/progress', (req, res) => {
+  progress.Progress(
+    req.body.userId
+  )
+  .then(result => {
+    res.json(result)
+  })
+})
+
 module.exports = router
