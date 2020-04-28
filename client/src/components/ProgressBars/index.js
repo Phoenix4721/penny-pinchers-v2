@@ -7,17 +7,29 @@ function ProgressBars(props) {
     
     <div>
       <h2>Percentage of Budget Used</h2><br />
+      <h4>
+        Groceries
+      </h4>
         <MDBProgress material value={props.groc} height="60px" animated>
-          Groceries
+          {Math.round(props.groc)} % 
         </MDBProgress><br />
+        <h4>
+        Transportation
+      </h4>
         <MDBProgress material value={props.trans} height="60px" animated>
-          Transportation
+        {Math.round(props.trans)} % 
         </MDBProgress> <br />
+        <h4>
+        Dining
+      </h4>
         <MDBProgress material value={props.dine} height="60px" animated>
-          Dining
+        {Math.round(props.dine)} % 
         </MDBProgress> <br />
+        <h4>
+        Shopping
+      </h4>
         <MDBProgress material value={props.shop} height="60px" animated>
-          Shopping
+        {Math.round(props.shop)} % 
         </MDBProgress><br />
     </div>
     )
