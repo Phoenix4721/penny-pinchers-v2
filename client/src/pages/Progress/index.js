@@ -5,6 +5,7 @@ import { withGlobalState } from 'react-globally'
 import NavBar from '../../components/NavBar'
 import ProgressBars from '../../components/ProgressBars'
 
+
 function Progress(props) {
     Cookies.set('url', '/member', { path: '' })
       const [user, setUser] = useState('')
@@ -31,7 +32,6 @@ function Progress(props) {
       <body className="main-body">
         <NavBar />
           <ProgressBars groc = {groc} trans = {trans} dine = {dine} shop = {shop} />
-        {/* <img className="logo" src={logo}></img> */}
       </body>
     )   
 }

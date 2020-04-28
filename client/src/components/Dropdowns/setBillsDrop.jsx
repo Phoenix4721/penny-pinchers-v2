@@ -44,7 +44,7 @@ const setBillsDrop = (props) => {
 
   function onChangeDesc(event) {
     setBillDesc (event.target.value)
-  }
+  } 
 
 
   return (

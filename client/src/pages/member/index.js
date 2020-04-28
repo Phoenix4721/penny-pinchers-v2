@@ -4,8 +4,6 @@ import API from '../../utils/API'
 import { withGlobalState } from 'react-globally'
 import "./member.css"
 import NavBar from '../../components/NavBar'
-import Sidenav from '../../components/SideNav'
-import { Row, Col, Card, CardTitle, CardText, Button } from 'reactstrap'
 import RecentBills from "../../components/RecentBills";
 
 

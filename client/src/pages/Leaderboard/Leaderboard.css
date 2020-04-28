@@ -1,3 +1,71 @@
+.leader-body {
+  background-image: linear-gradient(green, white);
+    height: 100vh;
+    width: 100vw;
+    text-align: center;
+     overflow: hidden; 
+}
+
+.leader-div {
+  display: inline-block;
+  
+}
+.leader-header {
+  border-bottom: 1px black solid;
+  text-align: left;
+  
+}
+
+.leader-title {
+  border-bottom: 1px black solid;
+  font-family: 'Arial', Times, serif;
+  padding-bottom: 1vh;
+}
+
+.card-body {
+  background: transparent;
+  border: none;
+  
+  
+}
+.card-title {
+  font-weight: 800;
+  font-size: large;
+}
+
+.card-text {
+  padding-bottom: 2vh;
+  border-bottom: 1px solid gray;
+}
+.leader-logo {
+  margin-top: 5vh;
+  width: 10vw; 
+  height: 15vh;
+} 
+/* .leader-header-div {
+    border-bottom: 1px black solid;
+    display: inline-block;
+    font-size: x-large;
+    margin: 4vh auto;
+}
+
+
+.leader-name {
+  font-weight: 700;
+  font-size: large;
+  
+
+}
+
+.leader-score {
+  font-weight: 500;
+  font-size: medium;
+}
+
+*/
+
+
+
 /* #container {
     width: 600px;
     height: auto;

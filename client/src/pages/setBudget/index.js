@@ -1,25 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import fakeAuth from '../../utils/authContext'
-import LogOut from '../../components/logOutBut'
 import Cookies from 'js-cookie'
 import { useHistory } from "react-router-dom";
-import { InputGroup, InputGroupAddon, Col, Row, Button, Form, Label, Input } from 'reactstrap';
+import { Form } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import API from '../../utils/API';
 import SetBudgetDrop from '../../components/Dropdowns/budgetDrop/setBudgetDrop';
 import NavBar from '../../components/NavBar'
+import logo from "../member/white-logo.png"
 
 
-
-// Dustin Was Here
-function SetBudget (props) {
+// Dustin Was Here, not anymore
+function SetBudget () {
     let history = useHistory();
-    const [groceryState, setGrocery] = useState({
-      groceriesBudget: 0,
-      transportationBudget: 0,
-      diningBudget: 0,
-      shoppingBudget: 0
-    })
+    
     Cookies.set('url', '/setBudget', { path: '' })
     let login = (site) => {
       fakeAuth.authenticate(() => {
@@ -27,27 +20,6 @@ function SetBudget (props) {
         
       });
     };
-
-   function handleChange (event) {
-      setGrocery({ ...groceryState,  ...{ [event.target.name]: Number(event.target.value) } })
-    }
-
-   function handleSubmit (event) {
-      event.preventDefault()
-        var data = {
-          groceriesBudget: groceryState.groceriesBudget,
-          transportationBudget: groceryState.transportationBudget,
-          diningBudget: groceryState.diningBudget,
-          shoppingBudget: groceryState.shoppingBudget
-        }
-        console.log(data)
-        API.budget({
-          groceriesBudget: groceryState.groceriesBudget,
-          transportationBudget: groceryState.transportationBudget,
-          diningBudget: groceryState.diningBudget,
-          shoppingBudget: groceryState.shoppingBudget
-        })
-  } 
 
   return (
     <body className="main-body">
@@ -57,9 +29,10 @@ function SetBudget (props) {
         <SetBudgetDrop/>
       </Form>
     </div>
+    <img className="logo" style={{marginTop: '160px'}} src={logo}></img>
   </body>
   )   
 
-    }
+  }
   
 export default SetBudget

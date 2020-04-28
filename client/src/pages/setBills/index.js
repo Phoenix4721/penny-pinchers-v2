@@ -1,27 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import fakeAuth from '../../utils/authContext'
-import LogOut from '../../components/logOutBut'
 import Cookies from 'js-cookie'
 import { useHistory } from "react-router-dom";
 import { withGlobalState } from 'react-globally'
-import { InputGroup, InputGroupAddon, Col, Row, Button, Form, Label, Input,  ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem  } from 'reactstrap';
+import { Form  } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import API from '../../utils/API';
 import './setbill.css'
 import SetBillsDrop from '../../components/Dropdowns/setBillsDrop';
 import NavBar from '../../components/NavBar'
 import logo from "../member/white-logo.png"
 
 
-
-function SetBills (props) {
+function SetBills () {
   let history = useHistory();
-  const [billState, setBill] = useState({
-    groceries: 0,
-    transportation: 0,
-    dining: 0,
-    shopping: 0
-  })
+  
   Cookies.set('url', '/setBills', { path: '' })
   let login = (site) => {
     fakeAuth.authenticate(() => {
@@ -30,28 +22,6 @@ function SetBills (props) {
     });
   };
 
-  function handleChange (event) {
-      setBill({ ...billState,  ...{ [event.target.name]: Number(event.target.value) } })
-    }
-
-    function handleSubmit (event) {
-      event.preventDefault()
-        var data
-         = {
-          groceries: billState.groceries,
-          transportation: billState.transportation,
-          dining: billState.dining,
-          shopping: billState.shopping
-        }
-        console.log(data)
-      API.bills({
-          groceries: billState.groceries,
-          transportation: billState.transportation,
-          dining: billState.dining,
-          shopping: billState.shopping
-      })
-} 
-
 return (
   <body className="main-body">
     <div>
@@ -59,7 +29,7 @@ return (
       <Form>
         <SetBillsDrop/>
       </Form>
-      <img className="logo" src={logo}></img> 
+      <img className="logo" style={{marginTop: '160px'}} src={logo}></img> 
     </div>
   </body>
 )   
