@@ -50,7 +50,7 @@ function ChatApp(props) {
         <div className='chat-main'  style={props.style}>
             
        
-            <div label="Chat">
+            <div label="Chat" className="chatty">
             {props.icon}
                 <h3 className="chatUser">{props.name}</h3>
                

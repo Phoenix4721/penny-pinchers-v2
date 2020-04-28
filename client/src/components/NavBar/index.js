@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Nav, Navbar, Collapse, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, NavbarBrand, NavbarToggler, NavbarText } from 'reactstrap';
+import { Nav, Navbar, Collapse, NavItem, NavLink, NavbarBrand, NavbarToggler } from 'reactstrap';
 import fakeAuth from '../../utils/authContext'
 import { useHistory } from "react-router-dom";
 import './nav.css'
 import SideNav from '../SideNav'
-import ChatApp from '../ChatApp/ChatApp'
+import Logout from '../logOutBut'
 
-
-function NavbarTop(props) {
+function NavbarTop() {
 
   const [isOpen, setIsOpen] = useState(false);
   const [show, setShow] = useState(false)
@@ -31,34 +30,23 @@ function NavbarTop(props) {
 <div>
     <Navbar expand="md">
         <NavbarBrand onClick={() => {login('/member')}} className="hii">Penny Pinchers</NavbarBrand>
-        <NavbarToggler onClick={toggle} />
+        <NavbarToggler onClick={toggle} ><span><i class="fa fa-angle-down" aria-hidden="true"></i></span></NavbarToggler>
        { show ? <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
+       <Nav className="mdr-auto" navbar>
             <NavItem>
-              <NavLink href="/components/">Components</NavLink>
+              <NavLink onClick={() => {login('/setBudget')}}>Budgets</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+              <NavLink onClick={() => {login('/setBills')}}>Bills</NavLink>
             </NavItem>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Options
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>
-                  Option 1
-                </DropdownItem>
-                <DropdownItem>
-                  Option 2
-                </DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>
-                  Reset
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
+            <NavItem>
+              <NavLink onClick={() => {login('/leaderboard')}}>Progress</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink><Logout /></NavLink>
+            </NavItem>
           </Nav>
-          <NavbarText>Simple Text</NavbarText>
+         
   </Collapse> : undefined}
       </Navbar>
 

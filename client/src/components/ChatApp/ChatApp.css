@@ -105,5 +105,46 @@
     margin-top: -160px;
 }
 
+@media only screen and (max-width: 768px) {
+    .mainWrapper {
+        display: none;
+    }
+
+    .chat-main{
+        width: 100%;
+     
+    }
+
+    .messages {
+        width: 100%;
+        overflow-x: scroll
+    }
+
+    .msg{
+        margin-left: 0;
+        width: 100%;
+        
+   
+    }
+    .chatty {
+        width: 100%;
+    }
+
+    .sendMsg {
+        
+        width: 200px;
+        
+        background-color: rgba(121, 185, 112, 0.568);
+        transition: .2s ease-in-out;
+        
+        margin: 0px auto;
+        left: 0;
+        right: 0;
+       
+    
+    }
+
+
+  }
 
 
