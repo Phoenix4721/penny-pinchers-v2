@@ -36,6 +36,7 @@ const setBillsDrop = (props) => {
       date: new Date(Date.now()).toLocaleString().split(',')[0],
       userId: props.globalState.user.userId
     })
+    setBillDesc('')
   }
 
   function onChange(event) {
@@ -49,7 +50,7 @@ const setBillsDrop = (props) => {
 
   return (
       <Form>
-    <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
+    <ButtonDropdown isOpen={dropdownOpen} toggle={toggle} >
       <DropdownToggle caret>
         {show ? val : 'Set Your Bills'}
        
@@ -72,7 +73,7 @@ const setBillsDrop = (props) => {
                   <InputGroupAddon addonType="append">.00</InputGroupAddon>
                 </InputGroup>
                 <div>
-                    <textarea style={{width:'300px', height:'60px'}} onChange={(event) => onChangeDesc(event)}></textarea>
+                    <textarea style={{width:'300px', height:'60px'}} value={billDesc} onChange={(event) => onChangeDesc(event)}></textarea>
                 </div>
                 <Button color="secondary" size="sm" onClick={() => onClick()} method="user" className="right">Add Bill</Button>
             </Col>
