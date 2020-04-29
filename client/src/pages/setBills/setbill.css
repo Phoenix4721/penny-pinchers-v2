@@ -1,0 +1,28 @@
+.main-body {
+    background-image: linear-gradient(green, white);
+    height: 100vh;
+    width: 100vw;
+    text-align: center;
+    overflow: hidden;
+}
+
+.text-center {
+    color: white;
+    font-size: 50px;
+}
+
+.setbill-btn {
+    background-color: green;
+    color: white;
+    border: none;
+    margin: 2vh auto;
+}
+
+.setbill-btn:hover {
+    background-color: white;
+    color: green;
+}
+
+.setbill-input:hover {
+    border: 2px green solid;
+}

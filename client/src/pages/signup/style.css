@@ -1,0 +1,79 @@
+.progressBar {
+    background-color: lightgrey;
+    width: 25vw;
+    height: 20px;
+    
+  }
+  
+  
+  .progress {
+    height: 100%;
+  }
+  
+  .main-body {
+    background-image: linear-gradient(green, white);
+    height: 100vh;
+    width: 100vw;
+    text-align: center
+}
+.h3 {
+   margin-bottom: 10vh;
+   padding-top: 5vh;
+   color: white 
+}
+
+.logo {
+    width: 22vw; 
+    height: 25vh
+}
+
+.form-group {
+    display: inline-block;
+}
+
+.form-control {
+    width: 25vw;
+    height: 10vh; 
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.5);
+    
+}
+
+.username-input:hover {
+    border: 2px green solid;
+}
+.password-input:hover {
+    border: 2px green solid;
+}
+
+.signup-div {
+    width: "100vw"
+}
+
+.signUp {
+    color: black;
+    border-right: solid black 1px;
+    padding-right: 1vw
+}
+
+.github-link {
+    color: black; 
+    padding-left: 1vw
+}
+
+.log-btn {
+    width: 25vw;
+    background-color: rgba(7, 151, 7, 0.671);
+    color: white; 
+    border: none; 
+    border-radius: 3%;
+    margin: 5vh auto;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    transition: .3s ease-in-out;
+    border: 5px rgba(0, 128, 0, 0.479) solid;
+}
+.log-btn:hover {
+    background-color: rgba(7, 151, 7, 0.397);
+    color: white;
+}

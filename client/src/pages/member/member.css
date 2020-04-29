@@ -1,0 +1,85 @@
+.main-body {
+    background-image: linear-gradient(green, white);
+    height: 100vh;
+    width: 100vw;
+    text-align: center;
+    overflow: hidden;
+}
+
+.main-div {
+    color: white;
+    font-size: 50px;
+    margin-bottom: 5vh;
+    padding-top: 5vh;
+}
+
+.member-div {
+    margin-bottom: 5vh;
+}
+
+.setbills-btn {
+    width: 25vw;
+    background-color: green;
+    color: white; 
+    border: none; 
+    border-radius: 3%;
+    margin: 5vh auto;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+}
+
+.setbills-btn:hover {
+    background-color: white;
+    color: green;
+}
+
+.bills-div {
+    margin-bottom: 5vh;
+}
+
+.card {
+   border: none;
+   line-height: 0.7rem;
+}
+
+.bills-span {
+    text-align: left;
+}
+
+.recent-header {
+    border-bottom: 1px black solid;
+    display: inline-block;
+    font-size: x-large;
+    margin-left: 2.5vw;
+    margin-bottom: 1vh;
+}
+
+.title {
+    font-weight: 800;
+    font-size: large;
+    text-align: left;
+   
+    /* padding-bottom: 0vh; */
+}
+
+.text {
+    text-align: left;
+    padding-bottom: 3vh;
+    border-bottom: 1px solid gray;
+   
+}
+
+.body {
+    background-color: transparent;
+}
+
+.logo {
+    width: 8vw; 
+    height: 15vh;
+}
+
+.bills-div {
+    height: 400px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
