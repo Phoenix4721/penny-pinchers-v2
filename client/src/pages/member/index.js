@@ -27,7 +27,7 @@ function Member(props) {
     }, [])
 
     return (
-        <body className="main-body">
+        <div className="main-body">
 
           <NavBar />
         <div className="member-div">
@@ -41,7 +41,7 @@ function Member(props) {
           <RecentBills notes={notes} />
         </div>
         {/* <img className="logo" src={logo}></img> */}
-      </body>
+      </div>
     )   
 }
 

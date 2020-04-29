@@ -100,7 +100,7 @@ function Home(props) {
 
 
  return (
-    <body className="main-body" >
+    <div className="main-body" >
       <Form className="loginForm" onSubmit={handleSubmit}>
         <h1 className="h3"><img className="logo" src={logo}></img></h1>
              <FormGroup className="form-group">
@@ -137,7 +137,7 @@ function Home(props) {
                     <a className="github-link" target="_blank" href="https://github.com/Phoenix4721/penny-pinchers-v2">Github</a>
                 </div>
             </Form>
-    </body>
+    </div>
        
     )   
 }

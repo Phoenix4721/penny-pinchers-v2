@@ -29,10 +29,10 @@ function Progress(props) {
     }, [])
 
     return (
-      <body className="main-body">
+      <div className="main-body">
         <NavBar />
           <ProgressBars groc = {groc} trans = {trans} dine = {dine} shop = {shop} />
-      </body>
+      </div>
     )   
 }
 

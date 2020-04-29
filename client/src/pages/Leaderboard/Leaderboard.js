@@ -53,7 +53,7 @@ function Leaderboard(props) {
    
 
     return (
-        <body className="leader-body">
+        <div className="leader-body">
             <NavBar />
         {/* <div className="container"> */}
         
@@ -86,7 +86,7 @@ function Leaderboard(props) {
                 )
             })}
         {/* </div> */}
-        </body>
+        </div>
     )
 }
 

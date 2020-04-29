@@ -6,26 +6,19 @@ import { useHistory } from "react-router-dom";
 import './nav.css'
 import SideNav from '../SideNav'
 import Logout from '../logOutBut'
-
 function NavbarTop() {
-
   const [isOpen, setIsOpen] = useState(false);
   const [show, setShow] = useState(false)
-
   const toggle = () => {
     setIsOpen(!isOpen)
     setShow(!show)
   };
-
   let history = useHistory();
-
     let login = (site) => {
         fakeAuth.authenticate(() => {
           history.replace(site);
         });
       };
-
-
   return (
 <div>
     <Navbar expand="md">
@@ -40,20 +33,19 @@ function NavbarTop() {
               <NavLink onClick={() => {login('/setBills')}}>Bills</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink onClick={() => {login('/leaderboard')}}>Progress</NavLink>
+              <NavLink onClick={() => {login('/leaderboard')}}>Leader Board</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink onClick={() => {login('/progress')}}>Progress</NavLink>
             </NavItem>
             <NavItem>
               <NavLink><Logout /></NavLink>
             </NavItem>
           </Nav>
-         
   </Collapse> : undefined}
       </Navbar>
-
-
     {show ? <div /> : <SideNav /> }
 </div>
   );
 }
-
 export default NavbarTop;

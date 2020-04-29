@@ -22,7 +22,7 @@ function SetBudget () {
     };
 
   return (
-    <body className="main-body">
+    <div className="main-body">
     <div>
         <NavBar />
       <Form>
@@ -30,7 +30,7 @@ function SetBudget () {
       </Form>
     </div>
     <img className="logo" style={{marginTop: '160px'}} src={logo}></img>
-  </body>
+  </div>
   )   
 
   }

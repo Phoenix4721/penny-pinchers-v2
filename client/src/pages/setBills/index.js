@@ -23,7 +23,7 @@ function SetBills () {
   };
 
 return (
-  <body className="main-body">
+  <div className="main-body">
     <div>
         <NavBar />
       <Form>
@@ -31,7 +31,7 @@ return (
       </Form>
       <img className="logo" style={{marginTop: '160px'}} src={logo}></img> 
     </div>
-  </body>
+  </div>
 )   
 
 }
